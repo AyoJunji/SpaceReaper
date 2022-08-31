@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [Header("Stats")]
     public float moveSpeed = 15f;
+    [SerializeField] public int currentHealth { get; private set; }
+    private int maxHealth = 5;
+
+    [Header("Invincibility Frames")]
+    [SerializeField] private float iFramesDuration;
+    [SerializeField] private int numOfFlashes;
+    private SpriteRenderer playerSpriteRend;
 
     [Header("Assignables")]
     [SerializeField] private Rigidbody2D playerRB;
@@ -46,6 +53,9 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
+        playerSpriteRend = GetComponentInChildren<SpriteRenderer>();
+
+        currentHealth = maxHealth;
     }
 
     void Update()
@@ -64,5 +74,39 @@ public class PlayerMovement : MonoBehaviour
     private void Attack(InputAction.CallbackContext context)
     {
         Debug.Log("We attacked!");
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Debug.Log("Health Left: " + currentHealth);
+        currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
+
+        if (currentHealth > 0)
+        {
+            StartCoroutine(Invulnerability());
+        }
+
+        if (currentHealth <= 0)
+        {
+            OnDisable();
+            Destroy(gameObject);
+        }
+    }
+
+    //Invulnerable frames and number of flashes function
+    private IEnumerator Invulnerability()
+    {
+        Physics2D.IgnoreLayerCollision(6, 7, true);
+        Physics2D.IgnoreLayerCollision(6, 8, true);
+        for (int i = 0; i < numOfFlashes; i++)
+        {
+            playerSpriteRend.color = new Color(1, 0, 0, 0.5f);
+            yield return new WaitForSeconds(iFramesDuration / (numOfFlashes * 2));
+            playerSpriteRend.color = Color.white;
+            yield return new WaitForSeconds(iFramesDuration / (numOfFlashes * 2));
+        }
+
+        Physics2D.IgnoreLayerCollision(6, 7, false);
+        Physics2D.IgnoreLayerCollision(6, 8, false);
     }
 }

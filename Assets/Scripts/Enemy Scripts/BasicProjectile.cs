@@ -29,6 +29,7 @@ public class BasicProjectile : MonoBehaviour
     {
         if (coll.gameObject.tag == "Player")
         {
+            coll.gameObject.GetComponentInParent<PlayerController>().TakeDamage(1);
             Destroy(gameObject);
         }
     }

@@ -32,10 +32,18 @@ public class TrackingAlien : MonoBehaviour
         transform.rotation = Quaternion.Euler(Vector3.forward * angle);
     }
 
-    void OnCollisionEnter(Collision coll)
+    void OnCollisionEnter2D(Collision2D coll)
     {
+        //If player hit enemy, destroy this enemy
         if (coll.gameObject.tag == "Friendly Projectiles")
         {
+            Destroy(gameObject);
+        }
+
+        //If enemy crashed into player, player takes damage then destroy this enemy
+        if (coll.gameObject.tag == "Player")
+        {
+            coll.gameObject.GetComponent<PlayerController>().TakeDamage(1);
             Destroy(gameObject);
         }
     }
