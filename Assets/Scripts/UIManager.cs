@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
-public class PauseMenu : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     public GameObject pauseMenu;
     public static bool isPaused;
+
+    public GameObject deathMenu;
+    public static bool isDead;
 
     [Header("Player Input & Actions")]
     [SerializeField] public PlayerControls playerControls;
@@ -16,6 +19,8 @@ public class PauseMenu : MonoBehaviour
     void Awake()
     {
         playerControls = new PlayerControls();
+        isDead = false;
+        isPaused = false;
     }
 
     private void OnEnable()
@@ -23,26 +28,41 @@ public class PauseMenu : MonoBehaviour
         playerPause = playerControls.Gameplay.Pause;
         playerPause.Enable();
         playerPause.performed += Pause;
+
+        PlayerController.OnPlayerDeath += EnableDeathMenu;
     }
 
     private void OnDisable()
     {
         playerPause.Disable();
+
+        PlayerController.OnPlayerDeath -= EnableDeathMenu;
+    }
+
+    public void EnableDeathMenu()
+    {
+        deathMenu.SetActive(true);
+        isDead = true;
+        Time.timeScale = 0f;
     }
 
     private void Pause(InputAction.CallbackContext context)
     {
+        //If player isn't in the title screen then we can pause
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name != "TitleScreen")
         {
-
-            if (isPaused)
+            //If player isn't dead then we can pause
+            if (!isDead)
             {
-                ResumeGame();
-            }
-            else
-            {
-                PauseGame();
+                if (isPaused)
+                {
+                    ResumeGame();
+                }
+                else
+                {
+                    PauseGame();
+                }
             }
         }
     }
@@ -75,6 +95,28 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
 
         SceneManager.LoadScene("TitleScreen");
+    }
+
+
+    public void GoToHubShip()
+    {
+        Time.timeScale = 1f;
+        isPaused = false;
+        isDead = true;
+        deathMenu.SetActive(false);
+        pauseMenu.SetActive(false);
+
+        SceneManager.LoadScene("HubShip");
+    }
+
+    public void RestartLevel()
+    {
+        Time.timeScale = 1f;
+        isPaused = false;
+        isDead = false;
+        pauseMenu.SetActive(false);
+        deathMenu.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void QuitGame()

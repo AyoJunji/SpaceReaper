@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,8 +24,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public PlayerControls playerControls;
     private InputAction playerMove;
     private InputAction playerAttack;
+    private Vector2 movementInput = Vector2.zero;
 
-    Vector2 movementInput = Vector2.zero;
+    public static event Action OnPlayerDeath;
 
     //Before start function assign our player controls to the input system
     private void Awake()
@@ -88,8 +90,11 @@ public class PlayerController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            //Disable controls
             OnDisable();
-            Destroy(gameObject);
+
+            //Display death menu
+            OnPlayerDeath?.Invoke();
         }
     }
 
