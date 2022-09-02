@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [Header("Assignables")]
     [SerializeField] private Rigidbody2D playerRB;
     [SerializeField] private Transform playerOrientation;
+    [SerializeField] private ScytheAttack scytheAttack;
 
     [Header("Player Input & Actions")]
     [SerializeField] public PlayerControls playerControls;
@@ -27,10 +28,12 @@ public class PlayerController : MonoBehaviour
     private Vector2 movementInput = Vector2.zero;
 
     public static event Action OnPlayerDeath;
+    private bool attackResetted;
 
     //Before start function assign our player controls to the input system
     private void Awake()
     {
+        attackResetted = true;
         playerControls = new PlayerControls();
     }
 
@@ -42,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
         playerAttack = playerControls.Gameplay.Attack;
         playerAttack.Enable();
-        playerAttack.performed += Attack;
+        playerAttack.performed += ScytheAttack;
     }
 
     //Disables player controls when directed to
@@ -63,6 +66,17 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         movementInput = playerMove.ReadValue<Vector2>();
+
+        //Set direction of sprite to movement direction
+        if (movementInput.x < 0)
+        {
+            playerSpriteRend.flipX = true;
+        }
+        else if (movementInput.x > 0)
+        {
+            playerSpriteRend.flipX = false;
+
+        }
     }
 
 
@@ -70,12 +84,29 @@ public class PlayerController : MonoBehaviour
     {
         //Moving the player
         playerRB.velocity = new Vector2(movementInput.x * moveSpeed, movementInput.y * moveSpeed);
+
     }
 
     //Player's basic attack 
-    private void Attack(InputAction.CallbackContext context)
+    private void ScytheAttack(InputAction.CallbackContext context)
     {
-        Debug.Log("We attacked!");
+        Debug.Log("You attacked!");
+        //Cooldown for attacking
+        if (attackResetted == true)
+        {
+            if (playerSpriteRend.flipX == true)
+            {
+                scytheAttack.AttackLeft();
+                StartCoroutine(ResetAttack());
+            }
+
+            if (playerSpriteRend.flipX == false)
+            {
+                scytheAttack.AttackRight();
+                StartCoroutine(ResetAttack());
+            }
+        }
+
     }
 
     public void TakeDamage(int damage)
@@ -113,5 +144,13 @@ public class PlayerController : MonoBehaviour
 
         Physics2D.IgnoreLayerCollision(6, 7, false);
         Physics2D.IgnoreLayerCollision(6, 8, false);
+    }
+
+    private IEnumerator ResetAttack()
+    {
+        attackResetted = false;
+        yield return new WaitForSeconds(.5f);
+        attackResetted = true;
+        scytheAttack.StopAttack();
     }
 }

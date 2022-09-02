@@ -66,10 +66,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8627df371ecae364183780d9d37feac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1
   moveSpeed: 8
+  soulsWorth: 1
   alienRB: {fileID: 235704758338011971}
   alienCollider: {fileID: 235704759778106673}
-  playerObj: {fileID: 0}
+  soulsObj: {fileID: 3203243595412635184, guid: 25cbf2ed48995354fae27fd31a925d09, type: 3}
+  radius: 2
 --- !u!1 &235704759778106672
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,7 +86,7 @@ GameObject:
   - component: {fileID: 235704759778106673}
   m_Layer: 7
   m_Name: AlienObj
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

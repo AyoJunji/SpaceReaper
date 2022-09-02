@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7849108989934387868}
   m_Layer: 7
   m_Name: AlienTurret
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,12 +66,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808cb5fab3c8abd4b8f19ecefb277b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1
   cooldown: 1
+  soulsWorth: 3
   alienRB: {fileID: 7849108989934387870}
   alienCollider: {fileID: 7849108990661777239}
-  playerObj: {fileID: 0}
+  soulsObj: {fileID: 3203243595412635184, guid: 25cbf2ed48995354fae27fd31a925d09, type: 3}
   projectile: {fileID: 1456573322495579541, guid: 5afa26b42317cdf44bff561dde90e2fc, type: 3}
   distanceBetween: 15
+  radius: 2
 --- !u!1 &7849108990661777257
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,7 +88,7 @@ GameObject:
   - component: {fileID: 7849108990661777239}
   m_Layer: 7
   m_Name: AlienTurretObj
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

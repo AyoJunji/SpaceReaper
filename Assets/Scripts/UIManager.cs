@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class UIManager : MonoBehaviour
 
     public GameObject deathMenu;
     public static bool isDead;
+
+    public int soulsAmount;
+    public TextMeshProUGUI soulsText;
 
     [Header("Player Input & Actions")]
     [SerializeField] public PlayerControls playerControls;
@@ -21,6 +25,12 @@ public class UIManager : MonoBehaviour
         playerControls = new PlayerControls();
         isDead = false;
         isPaused = false;
+    }
+
+    void Update()
+    {
+        soulsAmount = StoreManager.soulsAmount;
+        soulsText.text = soulsAmount.ToString("Souls: " + soulsAmount);
     }
 
     private void OnEnable()

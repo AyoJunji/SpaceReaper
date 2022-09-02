@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AlienTurret : MonoBehaviour
+public class AlienTurret : MonoBehaviour, IDamageable
 {
+    [Header("Stats")]
+    [SerializeField] private int health;
     [SerializeField] private float cooldown = 1f;
+    [SerializeField] private int soulsWorth = 2;
 
     [Header("Assignables")]
     [SerializeField] private Rigidbody2D alienRB;
     [SerializeField] private Collider2D alienCollider;
-    public GameObject playerObj;
+    [SerializeField] private GameObject soulsObj;
+
+    private GameObject playerObj;
     public GameObject projectile;
 
     [Header("Range")]
@@ -17,12 +22,13 @@ public class AlienTurret : MonoBehaviour
     [SerializeField] private float distanceBetween;
 
     private bool projectileResetted;
-
+    public float radius;
     private void Start()
     {
         projectileResetted = true;
         alienCollider = GetComponent<Collider2D>();
         alienRB = GetComponent<Rigidbody2D>();
+        playerObj = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -45,6 +51,17 @@ public class AlienTurret : MonoBehaviour
                 StartCoroutine(ProjectileCooldown());
             }
         }
+
+        if (health <= 0)
+        {
+            for (var i = 0; i < soulsWorth; i++)
+            {
+                Vector3 randomPos = Random.insideUnitCircle * radius;
+                Instantiate(soulsObj, transform.position + randomPos, Quaternion.identity);
+            }
+
+            Destroy(gameObject);
+        }
     }
 
     //Spawning projectile then putting it in cooldown
@@ -61,12 +78,16 @@ public class AlienTurret : MonoBehaviour
         projectileResetted = true;
     }
 
-    //Destroying the alien object only when hit by the player
-    void OnCollisionEnter2D(Collision2D coll)
+    //Using the interface, takes damage from wherever the source is
+    public void Damage(int damageAmount)
     {
-        if (coll.gameObject.tag == "Friendly Projectiles")
-        {
-            Destroy(gameObject);
-        }
+        Debug.Log("ALIEN TURRET HIT");
+        health -= damageAmount;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

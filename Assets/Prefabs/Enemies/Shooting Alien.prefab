@@ -66,13 +66,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 620a762a0bfe6b241bb58d35c088d801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1
   moveSpeed: 2
   cooldown: 1.5
+  soulsWorth: 5
   alienRB: {fileID: 3936225264189852705}
   alienCollider: {fileID: 3936225264313365605}
-  playerObj: {fileID: 0}
+  soulsObj: {fileID: 3203243595412635184, guid: 25cbf2ed48995354fae27fd31a925d09, type: 3}
   projectile: {fileID: 1173029235056133552, guid: ca9667bf0c7ada64798d3096f23b4f73, type: 3}
   distanceBetween: 20
+  radius: 2
 --- !u!1 &3936225264313365604
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,7 +89,7 @@ GameObject:
   - component: {fileID: 3936225264313365605}
   m_Layer: 7
   m_Name: Shooting Alien Obj
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

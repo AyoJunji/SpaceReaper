@@ -5,11 +5,11 @@ using UnityEngine;
 public class StoreManager : MonoBehaviour
 {
     [Header("Player Inventory")]
-    private int soulsAmount;
+    public static int soulsAmount;
 
     void Start()
     {
-
+        soulsAmount = 0;
     }
 
     void Update()
