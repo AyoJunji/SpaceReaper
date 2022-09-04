@@ -5,22 +5,26 @@ using UnityEngine;
 public class PlayerAbilities : MonoBehaviour
 {
     [Header("Purchased Items")]
-    public bool boughtDash;
-    public bool boughtNuke;
-    public bool boughtScytheThrow;
+    public static bool boughtDash;
+    public static bool hasMaxNukes;
+    public static bool boughtScytheThrow;
+    public static bool hasShield;
+    private int shieldCheck;
 
     [Header("Abilities")]
-    public int currentNukes;
-    public int maxNukes;
-
-    void Start()
-    {
-
-    }
-
+    public static int currentNukes;
+    public int maxNukes = 5;
 
     void Update()
     {
+        if (currentNukes == maxNukes)
+        {
+            hasMaxNukes = true;
+        }
 
+        else if (currentNukes < maxNukes)
+        {
+            hasMaxNukes = false;
+        }
     }
 }

@@ -683,7 +683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1626389033}
   deathMenu: {fileID: 1692303157}
-  soulsAmount: 0
+  soulsSO: {fileID: 11400000, guid: 21d1c32dd915a8f4f8d45f6350b8873f, type: 2}
   soulsText: {fileID: 1809225551}
 --- !u!4 &675206722
 Transform:
@@ -3217,6 +3217,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2201633719691766113, guid: 69354cfe5898f824c8a01e0c89afd475, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201633721491533210, guid: 69354cfe5898f824c8a01e0c89afd475, type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201633721491533210, guid: 69354cfe5898f824c8a01e0c89afd475, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1183350377
+      objectReference: {fileID: 0}
     - target: {fileID: 2201633721562058625, guid: 69354cfe5898f824c8a01e0c89afd475, type: 3}
       propertyPath: m_RootOrder
       value: 11

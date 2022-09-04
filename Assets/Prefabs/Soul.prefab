@@ -205,6 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
+  soulsSO: {fileID: 11400000, guid: 21d1c32dd915a8f4f8d45f6350b8873f, type: 2}
 --- !u!58 &3844504208296537145
 CircleCollider2D:
   m_ObjectHideFlags: 0

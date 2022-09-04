@@ -13,7 +13,8 @@ public class UIManager : MonoBehaviour
     public GameObject deathMenu;
     public static bool isDead;
 
-    public int soulsAmount;
+    [SerializeField]
+    private SoulsSO soulsSO;
     public TextMeshProUGUI soulsText;
 
     [Header("Player Input & Actions")]
@@ -29,8 +30,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        soulsAmount = StoreManager.soulsAmount;
-        soulsText.text = soulsAmount.ToString("Souls: " + soulsAmount);
+        soulsText.text = ("Souls: " + soulsSO.Value);
     }
 
     private void OnEnable()

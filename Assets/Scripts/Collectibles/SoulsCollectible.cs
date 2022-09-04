@@ -6,6 +6,10 @@ public class SoulsCollectible : MonoBehaviour
 {
     private GameObject playerObj;
     public float moveSpeed;
+
+    [SerializeField]
+    private SoulsSO soulsSO;
+
     void Start()
     {
         playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -21,7 +25,7 @@ public class SoulsCollectible : MonoBehaviour
     {
         if (coll.gameObject.tag == "Player")
         {
-            StoreManager.soulsAmount += 1;
+            soulsSO.Value += 1;
             Destroy(gameObject);
         }
     }

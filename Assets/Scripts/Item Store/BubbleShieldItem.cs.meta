@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 46bf04e37b3e82b4abf2215b3a7fd264
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - storeTextObj: {instanceID: 0}
+  - soulsSO: {fileID: 11400000, guid: 21d1c32dd915a8f4f8d45f6350b8873f, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

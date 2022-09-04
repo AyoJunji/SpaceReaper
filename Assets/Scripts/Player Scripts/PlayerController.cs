@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Stats")]
     public float moveSpeed = 15f;
     [SerializeField] public int currentHealth { get; private set; }
-    private int maxHealth = 5;
+    public static int maxHealth = 5;
+    public int maxHealthIndicator;
 
     [Header("Invincibility Frames")]
     [SerializeField] private float iFramesDuration;
@@ -65,6 +67,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        maxHealthIndicator = maxHealth;
         movementInput = playerMove.ReadValue<Vector2>();
 
         //Set direction of sprite to movement direction
@@ -90,20 +93,25 @@ public class PlayerController : MonoBehaviour
     //Player's basic attack 
     private void ScytheAttack(InputAction.CallbackContext context)
     {
-        Debug.Log("You attacked!");
-        //Cooldown for attacking
-        if (attackResetted == true)
-        {
-            if (playerSpriteRend.flipX == true)
-            {
-                scytheAttack.AttackLeft();
-                StartCoroutine(ResetAttack());
-            }
+        Debug.Log("Attack button pressed");
 
-            if (playerSpriteRend.flipX == false)
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name != "TitleScreen" && scene.name != "HubShip")
+        {
+            //Cooldown for attacking
+            if (attackResetted == true)
             {
-                scytheAttack.AttackRight();
-                StartCoroutine(ResetAttack());
+                if (playerSpriteRend.flipX == true)
+                {
+                    scytheAttack.AttackLeft();
+                    StartCoroutine(ResetAttack());
+                }
+
+                if (playerSpriteRend.flipX == false)
+                {
+                    scytheAttack.AttackRight();
+                    StartCoroutine(ResetAttack());
+                }
             }
         }
 
