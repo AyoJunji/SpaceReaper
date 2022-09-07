@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     public GameObject deathMenu;
     public static bool isDead;
 
+    public GameObject fadeIn;
+
     [SerializeField]
     private SoulsSO soulsSO;
     public TextMeshProUGUI soulsText;
@@ -60,7 +62,7 @@ public class UIManager : MonoBehaviour
     {
         //If player isn't in the title screen then we can pause
         Scene scene = SceneManager.GetActiveScene();
-        if (scene.name != "TitleScreen")
+        if (scene.name != "TitleScreen" && scene.name != "HubShip")
         {
             //If player isn't dead then we can pause
             if (!isDead)
@@ -104,6 +106,8 @@ public class UIManager : MonoBehaviour
         isPaused = false;
         pauseMenu.SetActive(false);
 
+        Instantiate(fadeIn, transform.position, Quaternion.identity);
+        StartCoroutine(WaitTime());
         SceneManager.LoadScene("TitleScreen");
     }
 
@@ -116,6 +120,8 @@ public class UIManager : MonoBehaviour
         deathMenu.SetActive(false);
         pauseMenu.SetActive(false);
 
+        Instantiate(fadeIn, transform.position, Quaternion.identity);
+        StartCoroutine(WaitTime());
         SceneManager.LoadScene("HubShip");
     }
 
@@ -126,11 +132,19 @@ public class UIManager : MonoBehaviour
         isDead = false;
         pauseMenu.SetActive(false);
         deathMenu.SetActive(false);
+
+        Instantiate(fadeIn, transform.position, Quaternion.identity);
+        StartCoroutine(WaitTime());
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    private IEnumerator WaitTime()
+    {
+        yield return new WaitForSeconds(2);
     }
 }

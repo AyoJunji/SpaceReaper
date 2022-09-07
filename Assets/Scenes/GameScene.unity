@@ -683,6 +683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1626389033}
   deathMenu: {fileID: 1692303157}
+  fadeIn: {fileID: 0}
   soulsSO: {fileID: 11400000, guid: 21d1c32dd915a8f4f8d45f6350b8873f, type: 2}
   soulsText: {fileID: 1809225551}
 --- !u!4 &675206722
@@ -3218,8 +3219,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2201633719691766113, guid: 69354cfe5898f824c8a01e0c89afd475, type: 3}
+      propertyPath: m_Size.x
+      value: 2.331707
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201633719691766113, guid: 69354cfe5898f824c8a01e0c89afd475, type: 3}
+      propertyPath: m_Size.y
+      value: 4.2117615
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201633719691766113, guid: 69354cfe5898f824c8a01e0c89afd475, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201633719691766113, guid: 69354cfe5898f824c8a01e0c89afd475, type: 3}
+      propertyPath: m_Offset.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201633719691766113, guid: 69354cfe5898f824c8a01e0c89afd475, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201633719691766113, guid: 69354cfe5898f824c8a01e0c89afd475, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201633719691766126, guid: 69354cfe5898f824c8a01e0c89afd475, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201633719691766126, guid: 69354cfe5898f824c8a01e0c89afd475, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 2201633721491533210, guid: 69354cfe5898f824c8a01e0c89afd475, type: 3}
       propertyPath: m_SortingLayer
@@ -3232,6 +3261,10 @@ PrefabInstance:
     - target: {fileID: 2201633721562058625, guid: 69354cfe5898f824c8a01e0c89afd475, type: 3}
       propertyPath: m_RootOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201633721562058625, guid: 69354cfe5898f824c8a01e0c89afd475, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2201633721562058625, guid: 69354cfe5898f824c8a01e0c89afd475, type: 3}
       propertyPath: m_LocalPosition.x

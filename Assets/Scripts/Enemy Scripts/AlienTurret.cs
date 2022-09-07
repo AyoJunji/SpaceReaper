@@ -23,6 +23,7 @@ public class AlienTurret : MonoBehaviour, IDamageable
 
     private bool projectileResetted;
     public float radius;
+    
     private void Start()
     {
         projectileResetted = true;
