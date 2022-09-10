@@ -14,6 +14,42 @@ TextureImporter:
   - first:
       213: -3423964349622760944
     second: Untitled_Artwork (2)_3
+  - first:
+      213: -3116673458215485256
+    second: Reaper Idle Sprite Sheet_0
+  - first:
+      213: -1554810052954072430
+    second: Reaper Idle Sprite Sheet_1
+  - first:
+      213: -5412893656823247045
+    second: Reaper Idle Sprite Sheet_2
+  - first:
+      213: 5159411533947332763
+    second: Reaper Idle Sprite Sheet_3
+  - first:
+      213: -6435694842284961418
+    second: Reaper Idle Sprite Sheet_4
+  - first:
+      213: 8043488581786508714
+    second: Reaper Idle Sprite Sheet_5
+  - first:
+      213: -1944959242176972164
+    second: Reaper Idle Sprite Sheet_6
+  - first:
+      213: 1567630984559263793
+    second: Reaper Idle Sprite Sheet_7
+  - first:
+      213: 7580972151208750997
+    second: Reaper Idle Sprite Sheet_8
+  - first:
+      213: 4147611216042230238
+    second: Reaper Idle Sprite Sheet_9
+  - first:
+      213: -6963996784480326065
+    second: Reaper Idle Sprite Sheet_10
+  - first:
+      213: 1771264283591384081
+    second: Reaper Idle Sprite Sheet_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -103,253 +139,253 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Untitled_Artwork (2)_0
+      name: Reaper Idle Sprite Sheet_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 22
-        width: 651
-        height: 745
+        x: 61
+        y: 642
+        width: 18
+        height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a58c99f8ae9dcf60800000000000000
-      internalID: 8056269757015164320
+      spriteID: 8b08d2aa00a5fb4d0800000000000000
+      internalID: -3116673458215485256
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork (2)_1
+      name: Reaper Idle Sprite Sheet_1
       rect:
         serializedVersion: 2
-        x: 756
-        y: 8
-        width: 626
-        height: 730
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 50
+        y: 24
+        width: 658
+        height: 731
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7e2908ac83012900800000000000000
-      internalID: 657810923222281855
+      spriteID: 29a577c9e743c6ae0800000000000000
+      internalID: -1554810052954072430
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork (2)_2
+      name: Reaper Idle Sprite Sheet_2
       rect:
         serializedVersion: 2
-        x: 1585
-        y: 8
-        width: 632
-        height: 741
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fa909f9a0e1eaa7b0800000000000000
-      internalID: -5212105263687333457
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Untitled_Artwork (2)_3
-      rect:
-        serializedVersion: 2
-        x: 2194
-        y: 482
+        x: 834
+        y: 481
         width: 48
         height: 164
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01a4221a092ab70d0800000000000000
-      internalID: -3423964349622760944
+      spriteID: b3fc51ad5e981e4b0800000000000000
+      internalID: -5412893656823247045
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork (2)_4
+      name: Reaper Idle Sprite Sheet_3
       rect:
         serializedVersion: 2
-        x: 2369
-        y: 26
-        width: 640
-        height: 729
+        x: 831
+        y: 6
+        width: 662
+        height: 742
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b98ebf25479e99740800000000000000
+      internalID: 5159411533947332763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reaper Idle Sprite Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 6
+        width: 670
+        height: 731
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6719ac283a1dfa6a0800000000000000
+      internalID: -6435694842284961418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reaper Idle Sprite Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 2374
+        y: 21
+        width: 680
+        height: 746
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aad9b48bf3630af60800000000000000
+      internalID: 8043488581786508714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reaper Idle Sprite Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 615
+        width: 11
+        height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d130c28d5b29b1540800000000000000
-      internalID: 4979735122701714205
+      spriteID: c7abd63cfdd1205e0800000000000000
+      internalID: -1944959242176972164
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork (2)_5
+      name: Reaper Idle Sprite Sheet_7
       rect:
         serializedVersion: 2
-        x: 2999
-        y: 644
-        width: 16
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 94c26c49b5961e460800000000000000
-      internalID: 7269207115611647049
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Untitled_Artwork (2)_6
-      rect:
-        serializedVersion: 2
-        x: 665
-        y: 621
+        x: 2402
+        y: 620
         width: 9
-        height: 8
+        height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e435c541d6406a500800000000000000
-      internalID: 407017682863149902
+      spriteID: 1300d85231851c510800000000000000
+      internalID: 1567630984559263793
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork (2)_7
+      name: Reaper Idle Sprite Sheet_8
       rect:
         serializedVersion: 2
-        x: 3008
-        y: 617
-        width: 9
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6ea400acb93b998e0800000000000000
-      internalID: -1686119103783220506
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Untitled_Artwork (2)_8
-      rect:
-        serializedVersion: 2
-        x: 608
-        y: 460
-        width: 90
-        height: 107
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2032676d004651a90800000000000000
-      internalID: -7343853662596881662
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Untitled_Artwork (2)_9
-      rect:
-        serializedVersion: 2
-        x: 1384
-        y: 520
-        width: 42
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4ce2f71bda02303e0800000000000000
-      internalID: -2088789871790444860
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Untitled_Artwork (2)_10
-      rect:
-        serializedVersion: 2
-        x: 3002
-        y: 538
+        x: 53
+        y: 537
         width: 21
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 880703d633d57ea90800000000000000
-      internalID: -7284751396791881592
+      spriteID: 59f2dec7106053960800000000000000
+      internalID: 7580972151208750997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork (2)_11
+      name: Reaper Idle Sprite Sheet_9
       rect:
         serializedVersion: 2
-        x: 2320
-        y: 217
-        width: 16
-        height: 15
+        x: 1650
+        y: 518
+        width: 42
+        height: 66
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 032ae9198c4a3ef00800000000000000
-      internalID: 1144939911625744944
+      spriteID: ed18f9e0d664f8930800000000000000
+      internalID: 4147611216042230238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reaper Idle Sprite Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 2378
+        y: 459
+        width: 91
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4e661442d9ea5f90800000000000000
+      internalID: -6963996784480326065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reaper Idle Sprite Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 216
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11c1dca3b7bc49810800000000000000
+      internalID: 1771264283591384081
       vertices: []
       indices: 
       edges: []

@@ -106,7 +106,6 @@ public class UIManager : MonoBehaviour
         isPaused = false;
         pauseMenu.SetActive(false);
 
-        Instantiate(fadeIn, transform.position, Quaternion.identity);
         StartCoroutine(WaitTime());
         SceneManager.LoadScene("TitleScreen");
     }
@@ -120,7 +119,6 @@ public class UIManager : MonoBehaviour
         deathMenu.SetActive(false);
         pauseMenu.SetActive(false);
 
-        Instantiate(fadeIn, transform.position, Quaternion.identity);
         StartCoroutine(WaitTime());
         SceneManager.LoadScene("HubShip");
     }
@@ -133,7 +131,6 @@ public class UIManager : MonoBehaviour
         pauseMenu.SetActive(false);
         deathMenu.SetActive(false);
 
-        Instantiate(fadeIn, transform.position, Quaternion.identity);
         StartCoroutine(WaitTime());
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -145,6 +142,8 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator WaitTime()
     {
+        Instantiate(fadeIn, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(2);
+
     }
 }

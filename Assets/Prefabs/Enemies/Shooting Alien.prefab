@@ -73,7 +73,7 @@ MonoBehaviour:
   alienRB: {fileID: 3936225264189852705}
   alienCollider: {fileID: 3936225264313365605}
   soulsObj: {fileID: 3203243595412635184, guid: 25cbf2ed48995354fae27fd31a925d09, type: 3}
-  projectile: {fileID: 1173029235056133552, guid: ca9667bf0c7ada64798d3096f23b4f73, type: 3}
+  projectile: {fileID: 7447232887161466480, guid: 775908ff68546784787aedecb1ddfc61, type: 3}
   distanceBetween: 20
   radius: 2
 --- !u!1 &3936225264313365604

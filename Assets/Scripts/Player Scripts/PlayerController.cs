@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D playerRB;
     [SerializeField] private Transform playerOrientation;
     [SerializeField] private ScytheAttack scytheAttack;
+    [SerializeField] private Animator anim;
 
     [Header("Player Input & Actions")]
     [SerializeField] public PlayerControls playerControls;
@@ -61,6 +62,7 @@ public class PlayerController : MonoBehaviour
     {
         playerRB = GetComponent<Rigidbody2D>();
         playerSpriteRend = GetComponentInChildren<SpriteRenderer>();
+        anim = GetComponentInChildren<Animator>();
 
         currentHealth = maxHealth;
     }
@@ -141,7 +143,6 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Invulnerability()
     {
         Physics2D.IgnoreLayerCollision(6, 7, true);
-        Physics2D.IgnoreLayerCollision(6, 8, true);
         for (int i = 0; i < numOfFlashes; i++)
         {
             playerSpriteRend.color = new Color(1, 0, 0, 0.5f);
@@ -151,7 +152,7 @@ public class PlayerController : MonoBehaviour
         }
 
         Physics2D.IgnoreLayerCollision(6, 7, false);
-        Physics2D.IgnoreLayerCollision(6, 8, false);
+
     }
 
     private IEnumerator ResetAttack()

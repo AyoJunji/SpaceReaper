@@ -13,12 +13,10 @@ public class TurretProjectile : MonoBehaviour
 
     private void Start()
     {
-        playerObj = GameObject.FindGameObjectWithTag("Player").transform;
-        projectileRB = GetComponent<Rigidbody2D>();
-
+        playerObj = GameObject.FindGameObjectWithTag("PlayerTarget").transform;
+        projectileRB = GetComponentInChildren<Rigidbody2D>();
 
         targetPlayer = (playerObj.transform.position - transform.position).normalized * projectileSpeed;
-
 
         Destroy(gameObject, 4f);
     }
@@ -26,6 +24,12 @@ public class TurretProjectile : MonoBehaviour
     private void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, playerObj.position, projectileSpeed * Time.deltaTime);
+
+        Vector2 direction = playerObj.transform.position - transform.position;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
     }
 
     private void OnTriggerEnter2D(Collider2D coll)

@@ -13,6 +13,7 @@ public class AlienTurret : MonoBehaviour, IDamageable
     [SerializeField] private Rigidbody2D alienRB;
     [SerializeField] private Collider2D alienCollider;
     [SerializeField] private GameObject soulsObj;
+    public Transform barrelPosition;
 
     private GameObject playerObj;
     public GameObject projectile;
@@ -23,7 +24,7 @@ public class AlienTurret : MonoBehaviour, IDamageable
 
     private bool projectileResetted;
     public float radius;
-    
+
     private void Start()
     {
         projectileResetted = true;
@@ -68,7 +69,7 @@ public class AlienTurret : MonoBehaviour, IDamageable
     //Spawning projectile then putting it in cooldown
     void ShootProjectile()
     {
-        Instantiate(projectile, transform.position, Quaternion.identity);
+        Instantiate(projectile, barrelPosition.position, Quaternion.identity);
         projectileResetted = false;
     }
 

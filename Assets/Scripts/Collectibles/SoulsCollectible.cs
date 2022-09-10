@@ -12,7 +12,7 @@ public class SoulsCollectible : MonoBehaviour
 
     void Start()
     {
-        playerObj = GameObject.FindGameObjectWithTag("Player");
+        playerObj = GameObject.FindGameObjectWithTag("PlayerTarget");
     }
 
     // Update is called once per frame

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Reaper Attacks
+  - PlayerTarget
   layers:
   - Default
   - TransparentFX
