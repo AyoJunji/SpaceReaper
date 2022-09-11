@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform playerOrientation;
     [SerializeField] private ScytheAttack scytheAttack;
     [SerializeField] private Animator anim;
+    [SerializeField] private AudioSource audioSource;
+    public AudioClip hurtNoise;
+    public AudioClip scytheAttackNoise;
 
     [Header("Player Input & Actions")]
     [SerializeField] public PlayerControls playerControls;
@@ -103,6 +106,7 @@ public class PlayerController : MonoBehaviour
             //Cooldown for attacking
             if (attackResetted == true)
             {
+                audioSource.PlayOneShot(scytheAttackNoise);
                 if (playerSpriteRend.flipX == true)
                 {
                     scytheAttack.AttackLeft();
@@ -123,7 +127,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Health Left: " + currentHealth);
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
-
+        audioSource.PlayOneShot(hurtNoise);
         if (currentHealth > 0)
         {
             StartCoroutine(Invulnerability());

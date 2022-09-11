@@ -14,6 +14,8 @@ public class ShootingAlien : MonoBehaviour, IDamageable
     [SerializeField] private Rigidbody2D alienRB;
     [SerializeField] private Collider2D alienCollider;
     [SerializeField] private GameObject soulsObj;
+    [SerializeField] private AudioSource audioSource;
+    public AudioClip shootNoise;
 
     private GameObject playerObj;
     public GameObject projectile;
@@ -51,6 +53,7 @@ public class ShootingAlien : MonoBehaviour, IDamageable
         {
             if (projectileResetted == true)
             {
+                audioSource.PlayOneShot(shootNoise);
                 ShootProjectile();
                 StartCoroutine(ProjectileCooldown());
             }

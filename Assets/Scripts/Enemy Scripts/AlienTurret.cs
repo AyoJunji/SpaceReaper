@@ -6,13 +6,15 @@ public class AlienTurret : MonoBehaviour, IDamageable
 {
     [Header("Stats")]
     [SerializeField] private int health;
-    [SerializeField] private float cooldown = 1f;
+    [SerializeField] private float cooldown = 1.7f;
     [SerializeField] private int soulsWorth = 2;
 
     [Header("Assignables")]
     [SerializeField] private Rigidbody2D alienRB;
     [SerializeField] private Collider2D alienCollider;
     [SerializeField] private GameObject soulsObj;
+    [SerializeField] private AudioSource audioSource;
+    public AudioClip shootNoise;
     public Transform barrelPosition;
 
     private GameObject playerObj;
@@ -49,6 +51,7 @@ public class AlienTurret : MonoBehaviour, IDamageable
         {
             if (projectileResetted == true)
             {
+                audioSource.PlayOneShot(shootNoise);
                 ShootProjectile();
                 StartCoroutine(ProjectileCooldown());
             }

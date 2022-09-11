@@ -47,7 +47,7 @@
                     "name": "",
                     "id": "5d94fa1f-3dee-454c-8651-d8a865422b2c",
                     "path": "<XInputController>/buttonWest",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
