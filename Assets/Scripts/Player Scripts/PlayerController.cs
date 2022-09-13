@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
     public static event Action OnPlayerDeath;
     private bool attackResetted;
+    Vector2 lookDirection = new Vector2(1,0); 
 
     //Before start function assign our player controls to the input system
     private void Awake()
@@ -74,17 +75,16 @@ public class PlayerController : MonoBehaviour
     {
         maxHealthIndicator = maxHealth;
         movementInput = playerMove.ReadValue<Vector2>();
-
-        //Set direction of sprite to movement direction
-        if (movementInput.x < 0)
+                
+        if(!Mathf.Approximately(movementInput.x, 0.0f) || !Mathf.Approximately(movementInput.y, 0.0f))
         {
-            playerSpriteRend.flipX = true;
+            lookDirection.Set(movementInput.x, movementInput.y);
+            lookDirection.Normalize();
         }
-        else if (movementInput.x > 0)
-        {
-            playerSpriteRend.flipX = false;
-
-        }
+                
+        anim.SetFloat("Move X", lookDirection.x);
+        anim.SetFloat("Move Y", lookDirection.y);
+        anim.SetFloat("Speed", movementInput.magnitude);
     }
 
 

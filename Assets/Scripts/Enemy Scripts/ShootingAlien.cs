@@ -53,7 +53,10 @@ public class ShootingAlien : MonoBehaviour, IDamageable
         {
             if (projectileResetted == true)
             {
+                if(shootNoise != null)
+                {
                 audioSource.PlayOneShot(shootNoise);
+                }
                 ShootProjectile();
                 StartCoroutine(ProjectileCooldown());
             }
