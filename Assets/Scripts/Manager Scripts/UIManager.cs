@@ -32,7 +32,10 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        if(soulsSO != null)
+        {
         soulsText.text = ("Souls: " + soulsSO.Value);
+        }
     }
 
     private void OnEnable()
