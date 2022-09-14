@@ -106,14 +106,15 @@ public class PlayerController : MonoBehaviour
             //Cooldown for attacking
             if (attackResetted == true)
             {
+                anim.SetTrigger("Attack");
                 audioSource.PlayOneShot(scytheAttackNoise);
-                if (playerSpriteRend.flipX == true)
+                if (lookDirection.x > 0)
                 {
                     scytheAttack.AttackLeft();
                     StartCoroutine(ResetAttack());
                 }
 
-                if (playerSpriteRend.flipX == false)
+                if (lookDirection.x < 0)
                 {
                     scytheAttack.AttackRight();
                     StartCoroutine(ResetAttack());
