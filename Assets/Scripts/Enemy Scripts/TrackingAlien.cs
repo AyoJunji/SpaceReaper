@@ -29,12 +29,12 @@ public class TrackingAlien : MonoBehaviour, IDamageable
     {
 
         //Rotating enemy to face towards the player and moving it to the player
-        Vector2 direction = playerObj.transform.position - transform.position;
-        direction.Normalize();
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        //Vector2 direction = playerObj.transform.position - transform.position;
+        //direction.Normalize();
+        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         transform.position = Vector2.MoveTowards(this.transform.position, playerObj.transform.position, moveSpeed * Time.deltaTime);
-        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        //transform.rotation = Quaternion.Euler(Vector3.forward * angle);
 
         if (health <= 0)
         {

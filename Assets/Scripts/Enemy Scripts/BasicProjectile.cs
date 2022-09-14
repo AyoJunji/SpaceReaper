@@ -21,6 +21,11 @@ public class BasicProjectile : MonoBehaviour
 
         projectileRB.velocity = new Vector2(targetPlayer.x, targetPlayer.y);
 
+        Vector2 direction = playerObj.transform.position - transform.position;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
 
         Destroy(gameObject, 4f);
     }

@@ -16,7 +16,7 @@ public class ShootingAlien : MonoBehaviour, IDamageable
     [SerializeField] private GameObject soulsObj;
     [SerializeField] private AudioSource audioSource;
     public AudioClip shootNoise;
-
+    public Transform mouthPosition;
     private GameObject playerObj;
     public GameObject projectile;
 
@@ -41,21 +41,21 @@ public class ShootingAlien : MonoBehaviour, IDamageable
         distance = Vector2.Distance(transform.position, playerObj.transform.position);
 
         //Rotating enemy to face towards the player and moving it to the player
-        Vector2 direction = playerObj.transform.position - transform.position;
-        direction.Normalize();
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        //Vector2 direction = playerObj.transform.position - transform.position;
+        //direction.Normalize();
+        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         transform.position = Vector2.MoveTowards(this.transform.position, playerObj.transform.position, moveSpeed * Time.deltaTime);
-        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        //transform.rotation = Quaternion.Euler(Vector3.forward * angle);
 
         //Minimum distance before the alien can shoot at the player
         if (distance < distanceBetween)
         {
             if (projectileResetted == true)
             {
-                if(shootNoise != null)
+                if (shootNoise != null)
                 {
-                audioSource.PlayOneShot(shootNoise);
+                    audioSource.PlayOneShot(shootNoise);
                 }
                 ShootProjectile();
                 StartCoroutine(ProjectileCooldown());
@@ -77,7 +77,7 @@ public class ShootingAlien : MonoBehaviour, IDamageable
     //Spawning projectile then putting it in cooldown
     void ShootProjectile()
     {
-        Instantiate(projectile, transform.position, Quaternion.identity);
+        Instantiate(projectile, mouthPosition.position, Quaternion.identity);
         projectileResetted = false;
     }
 

@@ -14,6 +14,7 @@ public class PlayerAbilities : MonoBehaviour
     [Header("Abilities")]
     public static int currentNukes;
     public int maxNukes = 5;
+    public GameObject bubbleShield;
 
     void Update()
     {
@@ -25,6 +26,16 @@ public class PlayerAbilities : MonoBehaviour
         else if (currentNukes < maxNukes)
         {
             hasMaxNukes = false;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "Enemy")
+        {
+            GameObject objReference = coll.gameObject;
+            Destroy(objReference);
+            bubbleShield.SetActive(false);
         }
     }
 }

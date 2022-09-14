@@ -13,6 +13,10 @@ public class UIManager : MonoBehaviour
     public GameObject deathMenu;
     public static bool isDead;
 
+    public GameObject settingsMenu;
+    public static bool isSettingsOn;
+    public GameObject mainMenu;
+
     public GameObject fadeIn;
 
     [SerializeField]
@@ -28,13 +32,14 @@ public class UIManager : MonoBehaviour
         playerControls = new PlayerControls();
         isDead = false;
         isPaused = false;
+        isSettingsOn = false;
     }
 
     void Update()
     {
-        if(soulsSO != null)
+        if (soulsSO != null)
         {
-        soulsText.text = ("Souls: " + soulsSO.Value);
+            soulsText.text = ("Souls: " + soulsSO.Value);
         }
     }
 
@@ -148,5 +153,21 @@ public class UIManager : MonoBehaviour
         Instantiate(fadeIn, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(2);
 
+    }
+
+    public void SettingsMenu()
+    {
+        if (isSettingsOn)
+        {
+            settingsMenu.SetActive(false);
+            mainMenu.SetActive(true);
+            isSettingsOn = false;
+        }
+        else
+        {
+            settingsMenu.SetActive(true);
+            mainMenu.SetActive(false);
+            isSettingsOn = true;
+        }
     }
 }
