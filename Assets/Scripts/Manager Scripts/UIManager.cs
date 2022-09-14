@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
     public static bool isSettingsOn;
     public GameObject mainMenu;
 
-    public GameObject fadeIn;
+    // public GameObject fadeIn;
 
     [SerializeField]
     private SoulsSO soulsSO;
@@ -150,7 +150,7 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator WaitTime()
     {
-        Instantiate(fadeIn, transform.position, Quaternion.identity);
+        //Instantiate(fadeIn, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(2);
 
     }
