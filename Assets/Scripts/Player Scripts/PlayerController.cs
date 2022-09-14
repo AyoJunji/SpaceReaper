@@ -34,13 +34,13 @@ public class PlayerController : MonoBehaviour
     private Vector2 movementInput = Vector2.zero;
 
     public static event Action OnPlayerDeath;
-    private bool attackResetted;
+    private bool attackReset;
     Vector2 lookDirection = new Vector2(1,0); 
 
     //Before start function assign our player controls to the input system
     private void Awake()
     {
-        attackResetted = true;
+        attackReset = true;
         playerControls = new PlayerControls();
     }
 
@@ -104,17 +104,17 @@ public class PlayerController : MonoBehaviour
         if (scene.name != "TitleScreen" && scene.name != "HubShip")
         {
             //Cooldown for attacking
-            if (attackResetted == true)
+            if (attackReset == true)
             {
                 anim.SetTrigger("Attack");
                 audioSource.PlayOneShot(scytheAttackNoise);
-                if (lookDirection.x > 0)
+                if (movementInput.x < 0)
                 {
                     scytheAttack.AttackLeft();
                     StartCoroutine(ResetAttack());
                 }
 
-                if (lookDirection.x < 0)
+                if (movementInput.x > 0)
                 {
                     scytheAttack.AttackRight();
                     StartCoroutine(ResetAttack());
@@ -162,9 +162,9 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator ResetAttack()
     {
-        attackResetted = false;
+        attackReset = false;
         yield return new WaitForSeconds(.5f);
-        attackResetted = true;
+        attackReset = true;
         scytheAttack.StopAttack();
     }
 }
