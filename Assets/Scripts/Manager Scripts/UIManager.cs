@@ -70,10 +70,10 @@ public class UIManager : MonoBehaviour
     {
         //If player isn't in the title screen then we can pause
         Scene scene = SceneManager.GetActiveScene();
-        if (scene.name != "TitleScreen" && scene.name != "HubShip")
+        if (scene.name != "TitleScreen")
         {
             //If player isn't dead then we can pause
-            if (!isDead)
+            if (!isDead && !isPaused)
             {
                 if (isPaused)
                 {
@@ -160,14 +160,33 @@ public class UIManager : MonoBehaviour
         if (isSettingsOn)
         {
             settingsMenu.SetActive(false);
-            mainMenu.SetActive(true);
             isSettingsOn = false;
+
+            if (pauseMenu != null)
+            {
+                pauseMenu.SetActive(true);
+            }
+
+            if (mainMenu != null)
+            {
+                mainMenu.SetActive(true);
+            }
         }
+
         else
         {
             settingsMenu.SetActive(true);
-            mainMenu.SetActive(false);
             isSettingsOn = true;
+
+            if (pauseMenu != null)
+            {
+                pauseMenu.SetActive(false);
+            }
+
+            if (mainMenu != null)
+            {
+                mainMenu.SetActive(false);
+            }
         }
     }
 }
