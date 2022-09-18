@@ -5,9 +5,6 @@ using UnityEngine.InputSystem;
 
 public class ScytheThrowAbility : MonoBehaviour
 {
-    [Header("Player Inventory")]
-    private bool hasScytheThrow;
-
     [Header("Item Stuff")]
     public int scytheThrowCost;
     private bool playerInRange;
@@ -16,8 +13,9 @@ public class ScytheThrowAbility : MonoBehaviour
     public PlayerControls playerControls;
     private InputAction buyItem;
 
-    [SerializeField]
-    private SoulsSO soulsSO;
+    [SerializeField] private SoulsSO soulsSO;
+    [SerializeField] private AbilitiesSO abilitiesSO;
+
     void Awake()
     {
         playerControls = new PlayerControls();
@@ -29,11 +27,6 @@ public class ScytheThrowAbility : MonoBehaviour
         buyItem = playerControls.Gameplay.Dash;
         buyItem.Enable();
         buyItem.performed += BuyThrowAbility;
-    }
-
-    void Update()
-    {
-        hasScytheThrow = PlayerAbilities.boughtScytheThrow;
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -55,16 +48,16 @@ public class ScytheThrowAbility : MonoBehaviour
 
     void BuyThrowAbility(InputAction.CallbackContext context)
     {
-        if (soulsSO.Value >= scytheThrowCost && !hasScytheThrow && playerInRange == true)
+        if (soulsSO.Value >= scytheThrowCost && abilitiesSO.CheckThrow == false && playerInRange == true)
         {
             soulsSO.Value -= scytheThrowCost;
-            PlayerAbilities.boughtScytheThrow = true;
+            abilitiesSO.CheckThrow = true;
         }
         else if (soulsSO.Value < scytheThrowCost && playerInRange == true)
         {
             Debug.Log("Not enough souls!");
         }
-        else if (hasScytheThrow == true && playerInRange == true)
+        else if (abilitiesSO.CheckThrow == true && playerInRange == true)
         {
             Debug.Log("You already have scythe throw moron!");
         }

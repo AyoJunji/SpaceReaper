@@ -13,8 +13,9 @@ public class HealthItem : MonoBehaviour
     public PlayerControls playerControls;
     private InputAction buyItem;
 
-    [SerializeField]
-    private SoulsSO soulsSO;
+    [SerializeField] private SoulsSO soulsSO;
+    [SerializeField] private HealthSO healthSO;
+
     void Awake()
     {
         playerControls = new PlayerControls();
@@ -47,10 +48,15 @@ public class HealthItem : MonoBehaviour
 
     void BuyHealthUpgrade(InputAction.CallbackContext context)
     {
-        if (soulsSO.Value >= healthItemCost && playerInRange == true)
+        if (soulsSO.Value >= healthItemCost && playerInRange == true && (healthSO.CurrentHealthValue != healthSO.MaxHealthValue))
         {
             soulsSO.Value -= healthItemCost;
-            PlayerController.maxHealth += 1;
+            healthSO.CurrentHealthValue = Mathf.Clamp(healthSO.CurrentHealthValue + 1, 0, healthSO.MaxHealthValue);
+        }
+
+        else if (healthSO.CurrentHealthValue == healthSO.MaxHealthValue)
+        {
+            Debug.Log("YOU HAVE MAX HEALTH DORK");
         }
 
         else if (soulsSO.Value < healthItemCost && playerInRange == true)

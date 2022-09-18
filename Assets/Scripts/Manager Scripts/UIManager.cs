@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
     {
         if (soulsSO != null)
         {
-            soulsText.text = ("Souls: " + soulsSO.Value);
+            soulsText.text = (":" + soulsSO.Value);
         }
     }
 

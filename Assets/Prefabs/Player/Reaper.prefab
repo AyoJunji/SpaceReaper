@@ -318,7 +318,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.61636305, y: 0}
+  m_Offset: {x: -0.9545994, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -329,7 +329,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.564433, y: 4.2117615}
+  m_Size: {x: 1.1404057, y: 4.2117615}
   m_EdgeRadius: 0
 --- !u!114 &2201633719691766112
 MonoBehaviour:
@@ -423,7 +423,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.51, y: 7.4605813}
+  m_Size: {x: 6.5063953, y: 7.5000005}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -447,7 +447,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
     oldSize: {x: 6.583913, y: 7.3099995}
-    newSize: {x: 6.51, y: 7.4605813}
+    newSize: {x: 6.5063953, y: 7.5000005}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -546,9 +546,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
-  maxHealthIndicator: 0
+  dashForce: 3
   iFramesDuration: 1
   numOfFlashes: 3
+  healthSO: {fileID: 11400000, guid: 78792c0a9a8c0aa4aaaf9dd7ac00698b, type: 2}
+  abilitiesSO: {fileID: 11400000, guid: 1a6cc586808424c4286887e3ad29cfb0, type: 2}
   playerRB: {fileID: 2201633721562058624}
   playerOrientation: {fileID: 2201633719656770665}
   scytheAttack: {fileID: 2201633719691766112}
@@ -570,3 +572,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxNukes: 0
   bubbleShield: {fileID: 968511405}
+  abilitiesSO: {fileID: 11400000, guid: 1a6cc586808424c4286887e3ad29cfb0, type: 2}

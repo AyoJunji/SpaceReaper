@@ -9,9 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Stats")]
     public float moveSpeed = 15f;
-    [SerializeField] public int currentHealth { get; private set; }
-    public static int maxHealth = 5;
-    public int maxHealthIndicator;
+    public float dashForce = 3f;
 
     [Header("Invincibility Frames")]
     [SerializeField] private float iFramesDuration;
@@ -19,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer playerSpriteRend;
 
     [Header("Assignables")]
+    [SerializeField] private HealthSO healthSO;
+    [SerializeField] private AbilitiesSO abilitiesSO;
     [SerializeField] private Rigidbody2D playerRB;
     [SerializeField] private Transform playerOrientation;
     [SerializeField] private ScytheAttack scytheAttack;
@@ -31,11 +31,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public PlayerControls playerControls;
     private InputAction playerMove;
     private InputAction playerAttack;
+    private InputAction playerDash;
     private Vector2 movementInput = Vector2.zero;
+    private Vector2 moveDirection;
 
     public static event Action OnPlayerDeath;
     private bool attackReset;
-    Vector2 lookDirection = new Vector2(1,0); 
+    Vector2 lookDirection = new Vector2(1, 0);
 
     //Before start function assign our player controls to the input system
     private void Awake()
@@ -53,6 +55,10 @@ public class PlayerController : MonoBehaviour
         playerAttack = playerControls.Gameplay.Attack;
         playerAttack.Enable();
         playerAttack.performed += ScytheAttack;
+
+        playerDash = playerControls.Gameplay.Dash;
+        playerDash.Enable();
+        playerDash.performed += Dash;
     }
 
     //Disables player controls when directed to
@@ -67,21 +73,19 @@ public class PlayerController : MonoBehaviour
         playerRB = GetComponent<Rigidbody2D>();
         playerSpriteRend = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
-
-        currentHealth = maxHealth;
     }
 
     void Update()
     {
-        maxHealthIndicator = maxHealth;
         movementInput = playerMove.ReadValue<Vector2>();
-                
-        if(!Mathf.Approximately(movementInput.x, 0.0f) || !Mathf.Approximately(movementInput.y, 0.0f))
+        moveDirection = new Vector2(movementInput.x, movementInput.y);
+
+        if (!Mathf.Approximately(movementInput.x, 0.0f) || !Mathf.Approximately(movementInput.y, 0.0f))
         {
             lookDirection.Set(movementInput.x, movementInput.y);
             lookDirection.Normalize();
         }
-                
+
         anim.SetFloat("Move X", lookDirection.x);
         anim.SetFloat("Move Y", lookDirection.y);
         anim.SetFloat("Speed", movementInput.magnitude);
@@ -95,11 +99,21 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void Dash(InputAction.CallbackContext context)
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        Debug.Log("Dash input");
+        if (abilitiesSO.CheckDash == true && scene.name != "TitleScreen" && scene.name != "HubShip")
+        {
+            Debug.Log("Dash input went through");
+            playerRB.AddForce(moveDirection * dashForce, ForceMode2D.Impulse);
+        }
+    }
+
+
     //Player's basic attack 
     private void ScytheAttack(InputAction.CallbackContext context)
     {
-        Debug.Log("Attack button pressed");
-
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name != "TitleScreen" && scene.name != "HubShip")
         {
@@ -126,15 +140,17 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        Debug.Log("Health Left: " + currentHealth);
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
+        Debug.Log("Health Left: " + healthSO.CurrentHealthValue);
+        healthSO.CurrentHealthValue = Mathf.Clamp(healthSO.CurrentHealthValue - damage, 0, healthSO.MaxHealthValue);
+
         audioSource.PlayOneShot(hurtNoise);
-        if (currentHealth > 0)
+
+        if (healthSO.CurrentHealthValue > 0)
         {
             StartCoroutine(Invulnerability());
         }
 
-        if (currentHealth <= 0)
+        if (healthSO.CurrentHealthValue <= 0)
         {
             //Disable controls
             OnDisable();

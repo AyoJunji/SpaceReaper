@@ -5,9 +5,6 @@ using UnityEngine.InputSystem;
 
 public class BubbleShieldItem : MonoBehaviour
 {
-    [Header("Player Inventory")]
-    private bool hasShield;
-
     [Header("Item Stuff")]
     public int shieldCost;
     private bool playerInRange;
@@ -16,8 +13,9 @@ public class BubbleShieldItem : MonoBehaviour
     public PlayerControls playerControls;
     private InputAction buyItem;
 
-    [SerializeField]
-    private SoulsSO soulsSO;
+    [SerializeField] private SoulsSO soulsSO;
+    [SerializeField] private AbilitiesSO abilitiesSO;
+
     void Awake()
     {
         playerControls = new PlayerControls();
@@ -29,11 +27,6 @@ public class BubbleShieldItem : MonoBehaviour
         buyItem = playerControls.Gameplay.Dash;
         buyItem.Enable();
         buyItem.performed += BuyShieldAbility;
-    }
-
-    void Update()
-    {
-        hasShield = PlayerAbilities.hasShield;
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -55,15 +48,16 @@ public class BubbleShieldItem : MonoBehaviour
 
     void BuyShieldAbility(InputAction.CallbackContext context)
     {
-        if (soulsSO.Value >= shieldCost && !hasShield && playerInRange == true)
+        if (soulsSO.Value >= shieldCost && abilitiesSO.CheckBubbleShield == false && playerInRange == true)
         {
             soulsSO.Value -= shieldCost;
+            abilitiesSO.CheckBubbleShield = true;
         }
         else if (soulsSO.Value < shieldCost && playerInRange == true)
         {
             Debug.Log("Not enough souls!");
         }
-        else if (hasShield == true && playerInRange == true)
+        else if (abilitiesSO.CheckBubbleShield == true && playerInRange == true)
         {
             Debug.Log("You already have a shield moron!");
         }

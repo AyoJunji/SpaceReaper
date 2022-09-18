@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    [SerializeField]
-    private SoulsSO soulsSO;
-
+    [SerializeField] private SoulsSO soulsSO;
+    [SerializeField] private AbilitiesSO abilitiesSO;
     private void Start()
     {
         Cursor.visible = false;
@@ -18,6 +17,9 @@ public class GameManager : MonoBehaviour
         if (scene.name == "TitleScreen")
         {
             soulsSO.Value = 0;
+            abilitiesSO.CheckBubbleShield = false;
+            abilitiesSO.CheckDash = false;
+            abilitiesSO.CheckThrow = false;
         }
     }
 
