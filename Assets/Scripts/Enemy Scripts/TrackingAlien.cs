@@ -16,13 +16,18 @@ public class TrackingAlien : MonoBehaviour, IDamageable
 
     private GameObject playerObj;
     private float distance;
+    private Vector2 direction;
+    private Animator anim; 
 
     public float radius;
+
+
     private void Start()
     {
         playerObj = GameObject.FindGameObjectWithTag("Player");
         alienCollider = GetComponent<Collider2D>();
         alienRB = GetComponent<Rigidbody2D>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -35,6 +40,11 @@ public class TrackingAlien : MonoBehaviour, IDamageable
 
         transform.position = Vector2.MoveTowards(this.transform.position, playerObj.transform.position, moveSpeed * Time.deltaTime);
         //transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+
+        distance = Vector2.Distance(transform.position, playerObj.transform.position);
+        
+        direction = (playerObj.transform.position - transform.position).normalized;
+        anim.SetFloat("Move X", direction.x);
 
         if (health <= 0)
         {

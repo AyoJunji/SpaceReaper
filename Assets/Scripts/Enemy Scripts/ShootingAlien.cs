@@ -19,6 +19,8 @@ public class ShootingAlien : MonoBehaviour, IDamageable
     public Transform mouthPosition;
     private GameObject playerObj;
     public GameObject projectile;
+    Animator anim;
+    private Vector2 direction;
 
     [Header("Range")]
     private float distance;
@@ -34,11 +36,15 @@ public class ShootingAlien : MonoBehaviour, IDamageable
         projectileResetted = true;
         alienCollider = GetComponent<Collider2D>();
         alienRB = GetComponent<Rigidbody2D>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
         distance = Vector2.Distance(transform.position, playerObj.transform.position);
+        
+        direction = (playerObj.transform.position - transform.position).normalized;
+        anim.SetFloat("Move X", direction.x);
 
         //Rotating enemy to face towards the player and moving it to the player
         //Vector2 direction = playerObj.transform.position - transform.position;
