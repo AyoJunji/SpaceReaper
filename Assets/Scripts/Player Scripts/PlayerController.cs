@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
             if (attackReset == true)
             {
                 anim.SetTrigger("Attack");
-                audioSource.PlayOneShot(scytheAttackNoise);
+                audioSource.PlayOneShot(scytheAttackNoise, .2f);
                 if (movementInput.x < 0)
                 {
                     scytheAttack.AttackLeft();
@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Health Left: " + healthSO.CurrentHealthValue);
         healthSO.CurrentHealthValue = Mathf.Clamp(healthSO.CurrentHealthValue - damage, 0, healthSO.MaxHealthValue);
 
-        audioSource.PlayOneShot(hurtNoise);
+        audioSource.PlayOneShot(hurtNoise, .3f);
 
         if (healthSO.CurrentHealthValue > 0)
         {

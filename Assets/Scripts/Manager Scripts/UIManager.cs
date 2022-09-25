@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,9 +16,11 @@ public class UIManager : MonoBehaviour
 
     public GameObject settingsMenu;
     public static bool isSettingsOn;
+
     public GameObject mainMenu;
 
-    // public GameObject fadeIn;
+    [SerializeField] private HealthSO healthSO;
+    public Slider healthUI;
 
     [SerializeField]
     private SoulsSO soulsSO;
@@ -40,6 +43,11 @@ public class UIManager : MonoBehaviour
         if (soulsSO != null)
         {
             soulsText.text = (":" + soulsSO.Value);
+        }
+
+        if (healthUI != null)
+        {
+            SetHealth(healthSO.CurrentHealthValue);
         }
     }
 
@@ -118,19 +126,6 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("TitleScreen");
     }
 
-
-    public void GoToHubShip()
-    {
-        Time.timeScale = 1f;
-        isPaused = false;
-        isDead = true;
-        deathMenu.SetActive(false);
-        pauseMenu.SetActive(false);
-
-        StartCoroutine(WaitTime());
-        SceneManager.LoadScene("HubShip");
-    }
-
     public void RestartLevel()
     {
         Time.timeScale = 1f;
@@ -141,6 +136,7 @@ public class UIManager : MonoBehaviour
 
         StartCoroutine(WaitTime());
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        healthSO.CurrentHealthValue = healthSO.MaxHealthValue;
     }
 
     public void QuitGame()
@@ -153,6 +149,11 @@ public class UIManager : MonoBehaviour
         //Instantiate(fadeIn, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(2);
 
+    }
+
+    public void SetHealth(float health)
+    {
+        healthUI.value = health;
     }
 
     public void SettingsMenu()

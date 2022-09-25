@@ -9,9 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScreen.unity
     guid: d4db1423a5778e14b9d30a406ff83069
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
     path: Assets/Scenes/HubShip.unity
     guid: c054ce110e41b004f8f803e8263f6b4f
+  - enabled: 1
+    path: Assets/Scenes/Level 1.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Level 2.unity
+    guid: 63170d52670e2f04d8c5789080e3c132
+  - enabled: 1
+    path: Assets/Scenes/Level 3.unity
+    guid: 82a6cb14425f83a408824d9a0b273442
   m_configObjects: {}
