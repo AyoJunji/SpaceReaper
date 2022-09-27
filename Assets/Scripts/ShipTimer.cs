@@ -23,9 +23,14 @@ public class ShipTimer : MonoBehaviour
                 SceneManager.LoadScene("Level 2");
             }
 
-            if (levelHandler.CheckLevelTwo == true && levelHandler.CheckLevelTwo == true)
+            if (levelHandler.CheckLevelOne == true && levelHandler.CheckLevelTwo == true)
             {
                 SceneManager.LoadScene("Level 3");
+            }
+
+            if (levelHandler.CheckLevelThree == true)
+            {
+                SceneManager.LoadScene("Win Scene");
             }
         }
 

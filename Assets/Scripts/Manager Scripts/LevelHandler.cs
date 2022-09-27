@@ -21,4 +21,10 @@ public class LevelHandler : ScriptableObject
         get { return beatenLevelTwo; }
         set { beatenLevelTwo = value; }
     }
+
+    public bool CheckLevelThree
+    {
+        get { return beatenLevelThree; }
+        set { beatenLevelThree = value; }
+    }
 }

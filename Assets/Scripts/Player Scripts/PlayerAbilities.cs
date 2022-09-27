@@ -9,24 +9,39 @@ public class PlayerAbilities : MonoBehaviour
     public static bool hasMaxNukes;
 
     [Header("Abilities")]
-    public static int currentNukes;
-    public int maxNukes = 5;
     public GameObject bubbleShield;
+    public GameObject nukeBox;
 
     [Header("Player Input")]
     [SerializeField] public PlayerControls playerControls;
-    private InputAction playerDash;
+    private InputAction playerNuke;
 
     [SerializeField] private AbilitiesSO abilitiesSO;
 
+    private float nukeCooldown = 3f;
+    private float nextNukeTime = 0;
+    private bool readyToNuke;
+
+    private void Awake()
+    {
+        playerControls = new PlayerControls();
+    }
+
     void Update()
     {
-        if (currentNukes == maxNukes)
+        if (Time.time > nextNukeTime)
+        {
+            readyToNuke = false;
+            nextNukeTime = Time.time + nukeCooldown;
+            readyToNuke = true;
+        }
+
+        if (abilitiesSO.CurrentNukeValue == abilitiesSO.MaxNukeValue)
         {
             hasMaxNukes = true;
         }
 
-        else if (currentNukes < maxNukes)
+        else if (abilitiesSO.CurrentNukeValue < abilitiesSO.MaxNukeValue)
         {
             hasMaxNukes = false;
         }
@@ -35,6 +50,19 @@ public class PlayerAbilities : MonoBehaviour
         {
             bubbleShield.SetActive(true);
         }
+    }
+
+    private void OnEnable()
+    {
+        playerNuke = playerControls.Gameplay.Dash;
+        playerNuke.Enable();
+        playerNuke.performed += NukeAbility;
+    }
+
+    //Disables player controls when directed to
+    private void OnDisable()
+    {
+        playerNuke.Disable();
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -46,5 +74,24 @@ public class PlayerAbilities : MonoBehaviour
             Destroy(objReference);
             bubbleShield.SetActive(false);
         }
+    }
+
+    private void NukeAbility(InputAction.CallbackContext context)
+    {
+        if (abilitiesSO.CurrentNukeValue > 0)
+        {
+            if (readyToNuke == true)
+            {
+                abilitiesSO.CurrentNukeValue -= 1;
+                NukeActivation();
+            }
+        }
+    }
+
+    private IEnumerator NukeActivation()
+    {
+        nukeBox.SetActive(true);
+        yield return new WaitForSeconds(.25f);
+        nukeBox.SetActive(false);
     }
 }

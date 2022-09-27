@@ -16,8 +16,9 @@ public class NukeAbility : MonoBehaviour
     public PlayerControls playerControls;
     private InputAction buyItem;
 
-    [SerializeField]
-    private SoulsSO soulsSO;
+    [SerializeField] private SoulsSO soulsSO;
+    [SerializeField] private AbilitiesSO abilitiesSO;
+
     void Awake()
     {
         playerControls = new PlayerControls();
@@ -58,7 +59,7 @@ public class NukeAbility : MonoBehaviour
         if (soulsSO.Value >= nukeCost && !hasMaxNukes && playerInRange == true)
         {
             soulsSO.Value -= nukeCost;
-            PlayerAbilities.currentNukes += 1;
+            abilitiesSO.CurrentNukeValue += 1;
         }
         else if (soulsSO.Value < nukeCost && playerInRange == true)
         {

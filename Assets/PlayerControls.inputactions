@@ -20,7 +20,7 @@
                     "id": "431fd5a7-71ec-4757-8dc6-26d2067d07b9",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 },
                 {
@@ -58,7 +58,7 @@
                     "name": "",
                     "id": "dcc96365-a7cc-4225-9f05-8e6ccd7a6be7",
                     "path": "<XInputController>/buttonSouth",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "",
                     "action": "Dash",
