@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
@@ -29,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Player Input & Actions")]
     [SerializeField] public PlayerControls playerControls;
+    [SerializeField] private InputActionReference actionReference;
+    [SerializeField] private InputActionReference dashReference;
     private InputAction playerMove;
     private InputAction playerAttack;
     private InputAction playerDash;
@@ -52,20 +55,17 @@ public class PlayerController : MonoBehaviour
         playerMove = playerControls.Gameplay.Move;
         playerMove.Enable();
 
-        playerAttack = playerControls.Gameplay.Attack;
-        playerAttack.Enable();
-        playerAttack.performed += ScytheAttack;
-
-        playerDash = playerControls.Gameplay.Dash;
-        playerDash.Enable();
-        playerDash.performed += Dash;
+        dashReference.action.Enable();
+        actionReference.action.Enable();
     }
 
     //Disables player controls when directed to
     private void OnDisable()
     {
         playerMove.Disable();
-        playerAttack.Disable();
+
+        dashReference.action.Disable();
+        actionReference.action.Disable();
     }
 
     void Start()
@@ -73,6 +73,34 @@ public class PlayerController : MonoBehaviour
         playerRB = GetComponent<Rigidbody2D>();
         playerSpriteRend = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
+
+        if (!(actionReference.action.interactions.Contains("Press") && actionReference.action.interactions.Contains("Hold")))
+        {
+            return;
+        }
+
+        if (!(dashReference.action.interactions.Contains("Press") && dashReference.action.interactions.Contains("Hold")))
+        {
+            return;
+        }
+
+        actionReference.action.performed += context =>
+        {
+            if (context.interaction is PressInteraction)
+            {
+                Debug.Log("Scythe Attack");
+                ScytheAttack();
+            }
+        };
+
+        dashReference.action.performed += context =>
+        {
+            if (context.interaction is PressInteraction)
+            {
+
+                Dash();
+            }
+        };
     }
 
     void Update()
@@ -99,7 +127,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void Dash(InputAction.CallbackContext context)
+    private void Dash()
     {
         Scene scene = SceneManager.GetActiveScene();
         Debug.Log("Dash input");
@@ -112,7 +140,7 @@ public class PlayerController : MonoBehaviour
 
 
     //Player's basic attack 
-    private void ScytheAttack(InputAction.CallbackContext context)
+    private void ScytheAttack()
     {
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name != "TitleScreen" && scene.name != "HubShip")

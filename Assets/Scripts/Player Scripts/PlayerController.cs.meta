@@ -3,7 +3,17 @@ guid: 376ca26d7bbec634ca21ffb132c5c607
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - healthSO: {instanceID: 0}
+  - abilitiesSO: {instanceID: 0}
+  - playerRB: {instanceID: 0}
+  - playerOrientation: {instanceID: 0}
+  - scytheAttack: {instanceID: 0}
+  - anim: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - hurtNoise: {instanceID: 0}
+  - scytheAttackNoise: {instanceID: 0}
+  - actionReference: {fileID: 3677733828412829267, guid: 2659863b6a39c3c498b5ca22d06ea66c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

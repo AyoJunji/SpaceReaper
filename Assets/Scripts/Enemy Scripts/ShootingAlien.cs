@@ -42,7 +42,7 @@ public class ShootingAlien : MonoBehaviour, IDamageable
     void Update()
     {
         distance = Vector2.Distance(transform.position, playerObj.transform.position);
-        
+
         direction = (playerObj.transform.position - transform.position).normalized;
         anim.SetFloat("Move X", direction.x);
 
@@ -99,6 +99,15 @@ public class ShootingAlien : MonoBehaviour, IDamageable
     {
         Debug.Log("SHOOTING ALIEN HIT");
         health -= damageAmount;
+    }
+
+    private void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "Nuke" || coll.gameObject.tag == "Scythe")
+        {
+            Instantiate(soulsObj, this.transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 
     private void OnDrawGizmos()

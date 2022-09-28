@@ -95,4 +95,13 @@ public class AlienTurret : MonoBehaviour, IDamageable
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radius);
     }
+
+    private void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "Nuke" || coll.gameObject.tag == "Scythe")
+        {
+            Instantiate(soulsObj, this.transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+    }
 }

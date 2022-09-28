@@ -33,7 +33,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""id"": ""df87e035-cb99-4641-9d93-3c0dae69ad0c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press,Hold"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -42,7 +42,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""id"": ""431fd5a7-71ec-4757-8dc6-26d2067d07b9"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press"",
+                    ""interactions"": ""Press,Hold"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -69,7 +69,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""5d94fa1f-3dee-454c-8651-d8a865422b2c"",
                     ""path"": ""<XInputController>/buttonWest"",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Attack"",

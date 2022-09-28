@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Reaper Attacks
   - PlayerTarget
+  - Nuke
+  - Scythe
   layers:
   - Default
   - TransparentFX

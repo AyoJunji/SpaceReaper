@@ -17,7 +17,7 @@ public class TrackingAlien : MonoBehaviour, IDamageable
     private GameObject playerObj;
     private float distance;
     private Vector2 direction;
-    private Animator anim; 
+    private Animator anim;
 
     public float radius;
 
@@ -42,7 +42,7 @@ public class TrackingAlien : MonoBehaviour, IDamageable
         //transform.rotation = Quaternion.Euler(Vector3.forward * angle);
 
         distance = Vector2.Distance(transform.position, playerObj.transform.position);
-        
+
         direction = (playerObj.transform.position - transform.position).normalized;
         anim.SetFloat("Move X", direction.x);
 
@@ -74,6 +74,15 @@ public class TrackingAlien : MonoBehaviour, IDamageable
     {
         Debug.Log("TRACKING ALIEN HIT");
         health -= damageAmount;
+    }
+
+    private void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "Nuke" || coll.gameObject.tag == "Scythe")
+        {
+            Instantiate(soulsObj, this.transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 
     private void OnDrawGizmos()

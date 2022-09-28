@@ -5,6 +5,8 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - bubbleShield: {instanceID: 0}
+  - nukeBox: {instanceID: 0}
+  - actionReference: {fileID: 3677733828412829267, guid: 2659863b6a39c3c498b5ca22d06ea66c, type: 3}
   - abilitiesSO: {fileID: 11400000, guid: 1a6cc586808424c4286887e3ad29cfb0, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}

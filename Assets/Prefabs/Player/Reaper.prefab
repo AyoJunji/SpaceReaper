@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 1765908172}
   m_Layer: 6
   m_Name: Nuke Hitbox
-  m_TagString: Untagged
+  m_TagString: Nuke
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,7 +145,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 113.95
+  m_Radius: 150
 --- !u!1 &2201633719656770664
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,6 +509,7 @@ Transform:
   - {fileID: 2201633719691766126}
   - {fileID: 1765908171}
   - {fileID: 968511406}
+  - {fileID: 327993818771334553}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -558,6 +559,8 @@ MonoBehaviour:
   audioSource: {fileID: 3242762201707482113}
   hurtNoise: {fileID: 8300000, guid: 838726e1014c4fd429db85623128d035, type: 3}
   scytheAttackNoise: {fileID: 8300000, guid: a30b00a5bf3d6744abb544aca914d791, type: 3}
+  actionReference: {fileID: 3677733828412829267, guid: 2659863b6a39c3c498b5ca22d06ea66c, type: 3}
+  dashReference: {fileID: -4612817502165417520, guid: 2659863b6a39c3c498b5ca22d06ea66c, type: 3}
 --- !u!114 &2201633721562058638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,7 +573,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646d34854cc4f8d4796bf6aa12152244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxNukes: 0
   bubbleShield: {fileID: 968511405}
   nukeBox: {fileID: 1765908170}
+  actionReference: {fileID: -4612817502165417520, guid: 2659863b6a39c3c498b5ca22d06ea66c, type: 3}
+  throwReference: {fileID: 3677733828412829267, guid: 2659863b6a39c3c498b5ca22d06ea66c, type: 3}
+  scythePosition: {fileID: 327993818771334553}
   abilitiesSO: {fileID: 11400000, guid: 1a6cc586808424c4286887e3ad29cfb0, type: 2}
+  scytheObject: {fileID: 3979040795314233115, guid: fbcf2df499226034ebce7a4a4a041965, type: 3}
+--- !u!1 &6546233953376660731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 327993818771334553}
+  m_Layer: 6
+  m_Name: ScytheThrowPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &327993818771334553
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6546233953376660731}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.9, y: 1.62, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2201633721562058625}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

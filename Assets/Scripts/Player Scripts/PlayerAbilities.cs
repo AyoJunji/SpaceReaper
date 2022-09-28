@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class PlayerAbilities : MonoBehaviour
 {
@@ -14,27 +15,69 @@ public class PlayerAbilities : MonoBehaviour
 
     [Header("Player Input")]
     [SerializeField] public PlayerControls playerControls;
-    private InputAction playerNuke;
+    [SerializeField] private InputActionReference actionReference;
+    [SerializeField] private InputActionReference throwReference;
+
+    public static bool playerHasScythe;
+    public Transform scythePosition;
 
     [SerializeField] private AbilitiesSO abilitiesSO;
 
-    private float nukeCooldown = 3f;
-    private float nextNukeTime = 0;
-    private bool readyToNuke;
+    public GameObject scytheObject;
+
+    GameObject target;
 
     private void Awake()
     {
         playerControls = new PlayerControls();
     }
 
+    private void OnEnable()
+    {
+        actionReference.action.Enable();
+        throwReference.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        actionReference.action.Disable();
+        throwReference.action.Disable();
+    }
+
+    void Start()
+    {
+        playerHasScythe = true;
+
+        if (!(actionReference.action.interactions.Contains("Press") && actionReference.action.interactions.Contains("Hold")))
+        {
+            return;
+        }
+
+        if (!(throwReference.action.interactions.Contains("Press") && throwReference.action.interactions.Contains("Hold")))
+        {
+            return;
+        }
+
+        actionReference.action.performed += context =>
+        {
+            if (context.interaction is HoldInteraction)
+            {
+                NukeAbility();
+            }
+        };
+
+        throwReference.action.performed += context =>
+        {
+            if (context.interaction is HoldInteraction)
+            {
+                Debug.Log("Throwing");
+                ScytheThrow();
+            }
+        };
+    }
+
     void Update()
     {
-        if (Time.time > nextNukeTime)
-        {
-            readyToNuke = false;
-            nextNukeTime = Time.time + nukeCooldown;
-            readyToNuke = true;
-        }
 
         if (abilitiesSO.CurrentNukeValue == abilitiesSO.MaxNukeValue)
         {
@@ -50,19 +93,8 @@ public class PlayerAbilities : MonoBehaviour
         {
             bubbleShield.SetActive(true);
         }
-    }
 
-    private void OnEnable()
-    {
-        playerNuke = playerControls.Gameplay.Dash;
-        playerNuke.Enable();
-        playerNuke.performed += NukeAbility;
-    }
 
-    //Disables player controls when directed to
-    private void OnDisable()
-    {
-        playerNuke.Disable();
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -74,23 +106,35 @@ public class PlayerAbilities : MonoBehaviour
             Destroy(objReference);
             bubbleShield.SetActive(false);
         }
-    }
 
-    private void NukeAbility(InputAction.CallbackContext context)
-    {
-        if (abilitiesSO.CurrentNukeValue > 0)
+        if (coll.gameObject.tag == "Scythe")
         {
-            if (readyToNuke == true)
-            {
-                abilitiesSO.CurrentNukeValue -= 1;
-                NukeActivation();
-            }
+            playerHasScythe = true;
         }
     }
 
+    private void NukeAbility()
+    {
+        if (abilitiesSO.CurrentNukeValue > 0)
+        {
+            nukeBox.SetActive(true);
+            abilitiesSO.CurrentNukeValue -= 1;
+            StartCoroutine(NukeActivation());
+        }
+    }
+
+    private void ScytheThrow()
+    {
+        if (abilitiesSO.CheckThrow == true && playerHasScythe == true)
+        {
+            playerHasScythe = false;
+            Instantiate(scytheObject, scythePosition.position, Quaternion.identity);
+        }
+    }
+
+
     private IEnumerator NukeActivation()
     {
-        nukeBox.SetActive(true);
         yield return new WaitForSeconds(.25f);
         nukeBox.SetActive(false);
     }
