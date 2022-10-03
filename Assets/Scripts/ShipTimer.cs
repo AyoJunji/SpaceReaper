@@ -27,11 +27,6 @@ public class ShipTimer : MonoBehaviour
             {
                 SceneManager.LoadScene("Level 3");
             }
-
-            if (levelHandler.CheckLevelThree == true)
-            {
-                SceneManager.LoadScene("Win Scene");
-            }
         }
 
         DisplayTime(currentTime);

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  cooldown: 1
+  cooldown: 2
   soulsWorth: 2
   alienRB: {fileID: 5151531097298438524}
   alienCollider: {fileID: 5151531098491993450}

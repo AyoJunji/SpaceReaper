@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
             abilitiesSO.CheckThrow = false;
             levelHandlerSO.CheckLevelOne = false;
             levelHandlerSO.CheckLevelTwo = false;
-            levelHandlerSO.CheckLevelThree = false;
         }
     }
 

@@ -15,5 +15,5 @@ MonoBehaviour:
   hasDashAbility: 0
   hasThrowAbility: 1
   hasBubbleShield: 0
-  currentNukeCount: 3
+  currentNukeCount: 2
   maxNukeCount: 5

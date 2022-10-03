@@ -21,6 +21,10 @@ public class TrackingAlien : MonoBehaviour, IDamageable
 
     public float radius;
 
+    private void Awake()
+    {
+        LevelWin.enemiesLeft++;
+    }
 
     private void Start()
     {
@@ -54,6 +58,7 @@ public class TrackingAlien : MonoBehaviour, IDamageable
                 Instantiate(soulsObj, this.transform.position + randomPos, Quaternion.identity);
             }
 
+            LevelWin.enemiesLeft--;
             Destroy(gameObject);
         }
     }
@@ -65,6 +70,7 @@ public class TrackingAlien : MonoBehaviour, IDamageable
         if (coll.gameObject.tag == "Player")
         {
             coll.gameObject.GetComponent<PlayerController>().TakeDamage(1);
+            LevelWin.enemiesLeft--;
             Destroy(gameObject);
         }
     }
@@ -81,6 +87,7 @@ public class TrackingAlien : MonoBehaviour, IDamageable
         if (coll.gameObject.tag == "Nuke" || coll.gameObject.tag == "Scythe")
         {
             Instantiate(soulsObj, this.transform.position, Quaternion.identity);
+            LevelWin.enemiesLeft--;
             Destroy(gameObject);
         }
     }

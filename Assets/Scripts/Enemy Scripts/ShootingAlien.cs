@@ -29,6 +29,11 @@ public class ShootingAlien : MonoBehaviour, IDamageable
     private bool projectileResetted;
     public float radius;
 
+    private void Awake()
+    {
+        LevelWin.enemiesLeft++;
+    }
+
     private void Start()
     {
         health = 1;
@@ -76,6 +81,7 @@ public class ShootingAlien : MonoBehaviour, IDamageable
                 Instantiate(soulsObj, this.transform.position + randomPos, Quaternion.identity);
             }
 
+            LevelWin.enemiesLeft--;
             Destroy(gameObject);
         }
     }
@@ -106,7 +112,17 @@ public class ShootingAlien : MonoBehaviour, IDamageable
         if (coll.gameObject.tag == "Nuke" || coll.gameObject.tag == "Scythe")
         {
             Instantiate(soulsObj, this.transform.position, Quaternion.identity);
+            LevelWin.enemiesLeft--;
             Destroy(gameObject);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        //If enemy crashed into player, player takes damage then destroy this enemy
+        if (coll.gameObject.tag == "Player")
+        {
+            coll.gameObject.GetComponent<PlayerController>().TakeDamage(1);
         }
     }
 

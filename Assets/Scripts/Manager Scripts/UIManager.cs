@@ -126,6 +126,12 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("TitleScreen");
     }
 
+    public void ReturnToMainMenu()
+    {
+        StartCoroutine(WaitTime());
+        SceneManager.LoadScene("TitleScreen");
+    }
+
     public void RestartLevel()
     {
         Time.timeScale = 1f;

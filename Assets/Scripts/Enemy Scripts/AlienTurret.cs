@@ -27,6 +27,11 @@ public class AlienTurret : MonoBehaviour, IDamageable
     private bool projectileResetted;
     public float radius;
 
+    private void Awake()
+    {
+        LevelWin.enemiesLeft++;
+    }
+
     private void Start()
     {
         projectileResetted = true;
@@ -65,6 +70,7 @@ public class AlienTurret : MonoBehaviour, IDamageable
                 Instantiate(soulsObj, transform.position + randomPos, Quaternion.identity);
             }
 
+            LevelWin.enemiesLeft--;
             Destroy(gameObject);
         }
     }
@@ -101,6 +107,7 @@ public class AlienTurret : MonoBehaviour, IDamageable
         if (coll.gameObject.tag == "Nuke" || coll.gameObject.tag == "Scythe")
         {
             Instantiate(soulsObj, this.transform.position, Quaternion.identity);
+            LevelWin.enemiesLeft--;
             Destroy(gameObject);
         }
     }

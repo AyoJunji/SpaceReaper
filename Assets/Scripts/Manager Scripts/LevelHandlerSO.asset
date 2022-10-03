@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d822f954db5c14a807b94216d5b566, type: 3}
   m_Name: LevelHandlerSO
   m_EditorClassIdentifier: 
-  beatenLevelOne: 1
+  beatenLevelOne: 0
   beatenLevelTwo: 0
   beatenLevelThree: 0

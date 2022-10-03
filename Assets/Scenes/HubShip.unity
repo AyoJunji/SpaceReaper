@@ -574,7 +574,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294312180}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.62008667, y: -9.928594, z: -10}
+  m_LocalPosition: {x: -0.00020313263, y: -9.893465, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 35495390}
@@ -23105,10 +23105,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6ef534adbe937499fbb3669b40fce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nukeCost: 15
+  nukeCost: 30
   storeTextObj: {fileID: 1019061647}
   soulsSO: {fileID: 11400000, guid: 21d1c32dd915a8f4f8d45f6350b8873f, type: 2}
-  abilitiesSO: {fileID: 0}
+  abilitiesSO: {fileID: 11400000, guid: 1a6cc586808424c4286887e3ad29cfb0, type: 2}
 --- !u!1 &584931315
 GameObject:
   m_ObjectHideFlags: 0
@@ -25481,22 +25481,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -5.4668074, y: 16.026619}
-      - {x: 10.514722, y: 16.064106}
-      - {x: 10.5146, y: 12.060235}
-      - {x: 18.507814, y: 12.070206}
-      - {x: 18.516106, y: 10.016768}
-      - {x: 22.51049, y: 10.055611}
-      - {x: 22.521336, y: 2.0480514}
-      - {x: 26.504904, y: 2.0480514}
-      - {x: 26.509785, y: -21.895472}
-      - {x: -23.461882, y: -21.905237}
-      - {x: -23.478209, y: 2.063445}
-      - {x: -17.460072, y: 2.0794425}
-      - {x: -17.46586, y: 10.066256}
-      - {x: -13.466071, y: 10.066256}
-      - {x: -13.466071, y: 12.057123}
-      - {x: -5.4923325, y: 12.078562}
+    - - {x: -23.397928, y: 2.0768194}
+      - {x: 24.566172, y: 2.0622623}
+      - {x: 24.554033, y: -21.841015}
+      - {x: -23.402155, y: -21.850586}
 --- !u!1 &1287526266
 GameObject:
   m_ObjectHideFlags: 0
@@ -27217,7 +27205,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Nuke Cost: \n15 Souls"
+  m_text: "Nuke Cost: \n30 Souls"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

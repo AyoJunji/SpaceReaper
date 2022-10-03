@@ -5,11 +5,10 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject alienGhost;
-    public GameObject alienExploder;
     public GameObject alienSpitter;
 
     public float ghostTimer = 2f;
-    public float exploderTimer = 4f;
+
     public float spitterTimer = 6f;
 
     public float spawnTimer = 12f;
@@ -17,7 +16,6 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnEnemy(ghostTimer, alienGhost));
-        StartCoroutine(SpawnEnemy(exploderTimer, alienExploder));
         StartCoroutine(SpawnEnemy(spitterTimer, alienSpitter));
     }
 
