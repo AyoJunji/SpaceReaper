@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1183350377
   m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 035062de3da2da5488a904c15825cae5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -96,9 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alienGhost: {fileID: 235704758338012029, guid: fb0c4e1dfa7df2043979399b9c6afd49, type: 3}
-  alienExploder: {fileID: 5151531097298438522, guid: 188b7ae17050748449138461dddffd4b, type: 3}
   alienSpitter: {fileID: 3936225264189852702, guid: 20e7a2382f3f4884f9248678099ac84b, type: 3}
   ghostTimer: 2
-  exploderTimer: 4
   spitterTimer: 6
   spawnTimer: 8
