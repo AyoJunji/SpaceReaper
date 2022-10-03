@@ -21,6 +21,9 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private HealthSO healthSO;
     public Slider healthUI;
+    public TextMeshProUGUI maxHealthCount;
+
+    public TextMeshProUGUI enemyCount;
 
     [SerializeField]
     private SoulsSO soulsSO;
@@ -48,6 +51,12 @@ public class UIManager : MonoBehaviour
         if (healthUI != null)
         {
             SetHealth(healthSO.CurrentHealthValue);
+            maxHealthCount.text = ("Max Health: " + healthSO.MaxHealthValue);
+        }
+
+        if (enemyCount != null)
+        {
+            enemyCount.text = ("Enemies Left: " + LevelWin.enemiesLeft);
         }
     }
 

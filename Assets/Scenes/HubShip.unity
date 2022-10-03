@@ -574,7 +574,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294312180}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.58200836, y: -9.894162, z: -10}
+  m_LocalPosition: {x: -0.00020313263, y: -9.893465, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 35495390}
@@ -23105,7 +23105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6ef534adbe937499fbb3669b40fce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nukeCost: 30
+  nukeCost: 50
   storeTextObj: {fileID: 1019061647}
   soulsSO: {fileID: 11400000, guid: 21d1c32dd915a8f4f8d45f6350b8873f, type: 2}
   abilitiesSO: {fileID: 11400000, guid: 1a6cc586808424c4286887e3ad29cfb0, type: 2}
@@ -27206,7 +27206,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Nuke Cost: \n30 Souls"
+  m_text: "Nuke Cost: \n50 Souls"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -29106,7 +29106,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Buy Health
+  m_text: 'Upgrade Max Health
 
     Cost: 10 Souls'
   m_isRightToLeft: 0

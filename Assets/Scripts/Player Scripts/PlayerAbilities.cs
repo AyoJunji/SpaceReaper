@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
+using UnityEngine.SceneManagement;
 
 public class PlayerAbilities : MonoBehaviour
 {
@@ -125,7 +126,8 @@ public class PlayerAbilities : MonoBehaviour
 
     private void ScytheThrow()
     {
-        if (abilitiesSO.CheckThrow == true && playerHasScythe == true)
+        Scene scene = SceneManager.GetActiveScene();
+        if (abilitiesSO.CheckThrow == true && playerHasScythe == true && scene.name != "TitleScreen" && scene.name != "HubShip")
         {
             playerHasScythe = false;
             Instantiate(scytheObject, scythePosition.position, Quaternion.identity);

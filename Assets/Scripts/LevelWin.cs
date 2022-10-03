@@ -6,8 +6,16 @@ using UnityEngine.SceneManagement;
 public class LevelWin : MonoBehaviour
 {
     [SerializeField] LevelHandler levelHandlerSO;
+    [SerializeField] HealthSO healthSO;
+
     public static int enemiesLeft;
     public int enemyCountDebug;
+
+    void Start()
+    {
+        healthSO.CurrentHealthValue = healthSO.MaxHealthValue;
+    }
+
     void Update()
     {
         enemyCountDebug = enemiesLeft;

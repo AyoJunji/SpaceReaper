@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name == "TitleScreen")
         {
+            healthSO.MaxHealthValue = 15;
             healthSO.CurrentHealthValue = healthSO.MaxHealthValue;
             soulsSO.Value = 0;
             abilitiesSO.CheckBubbleShield = false;
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
             abilitiesSO.CheckThrow = false;
             levelHandlerSO.CheckLevelOne = false;
             levelHandlerSO.CheckLevelTwo = false;
+            abilitiesSO.CurrentNukeValue = 0;
         }
     }
 

@@ -51,7 +51,7 @@ public class HealthItem : MonoBehaviour
         if (soulsSO.Value >= healthItemCost && playerInRange == true && (healthSO.CurrentHealthValue != healthSO.MaxHealthValue))
         {
             soulsSO.Value -= healthItemCost;
-            healthSO.CurrentHealthValue = Mathf.Clamp(healthSO.CurrentHealthValue + 1, 0, healthSO.MaxHealthValue);
+            healthSO.MaxHealthValue += 1;
         }
 
         else if (healthSO.CurrentHealthValue == healthSO.MaxHealthValue)
