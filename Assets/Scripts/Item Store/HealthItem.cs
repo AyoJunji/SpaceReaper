@@ -48,7 +48,7 @@ public class HealthItem : MonoBehaviour
 
     void BuyHealthUpgrade(InputAction.CallbackContext context)
     {
-        if (soulsSO.Value >= healthItemCost && playerInRange == true && (healthSO.CurrentHealthValue != healthSO.MaxHealthValue))
+        if (soulsSO.Value >= healthItemCost && playerInRange == true)
         {
             soulsSO.Value -= healthItemCost;
             healthSO.MaxHealthValue += 1;
