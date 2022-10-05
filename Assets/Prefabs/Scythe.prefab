@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3979040795314233110}
   - component: {fileID: 3979040795314233113}
   - component: {fileID: 3979040795314233112}
+  - component: {fileID: -7414909799766090687}
   m_Layer: 0
   m_Name: Scythe
   m_TagString: Scythe
@@ -145,3 +146,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.3595119, y: 4.9392967}
   m_EdgeRadius: 0
+--- !u!95 &-7414909799766090687
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3979040795314233115}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e54a0ca17b7ca654cbc8f58767d5b7a9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
