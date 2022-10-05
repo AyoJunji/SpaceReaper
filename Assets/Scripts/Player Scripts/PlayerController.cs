@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
 
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
         playerRB = GetComponent<Rigidbody2D>();
         playerSpriteRend = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
