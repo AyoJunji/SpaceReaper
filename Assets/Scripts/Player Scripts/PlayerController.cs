@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Stats")]
     public float moveSpeed = 15f;
+    public float dashForce = 3f;
 
     [Header("Invincibility Frames")]
     [SerializeField] private float iFramesDuration;
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputActionReference dashReference;
     private InputAction playerMove;
     private InputAction playerAttack;
+    private InputAction playerDash;
     private Vector2 movementInput = Vector2.zero;
     private Vector2 moveDirection;
 
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour
         playerMove = playerControls.Gameplay.Move;
         playerMove.Enable();
 
+        dashReference.action.Enable();
         actionReference.action.Enable();
     }
 
@@ -61,16 +64,24 @@ public class PlayerController : MonoBehaviour
     {
         playerMove.Disable();
 
+        dashReference.action.Disable();
         actionReference.action.Disable();
     }
 
     void Start()
     {
+
+        Time.timeScale = 1f;
         playerRB = GetComponent<Rigidbody2D>();
         playerSpriteRend = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
 
         if (!(actionReference.action.interactions.Contains("Press") && actionReference.action.interactions.Contains("Hold")))
+        {
+            return;
+        }
+
+        if (!(dashReference.action.interactions.Contains("Press") && dashReference.action.interactions.Contains("Hold")))
         {
             return;
         }
@@ -84,7 +95,14 @@ public class PlayerController : MonoBehaviour
             }
         };
 
-        healthSO.CurrentHealthValue = healthSO.MaxHealthValue;
+        dashReference.action.performed += context =>
+        {
+            if (context.interaction is PressInteraction)
+            {
+
+                Dash();
+            }
+        };
     }
 
     void Update()
@@ -110,6 +128,18 @@ public class PlayerController : MonoBehaviour
         playerRB.velocity = new Vector2(movementInput.x * moveSpeed, movementInput.y * moveSpeed);
 
     }
+
+    private void Dash()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        Debug.Log("Dash input");
+        if (abilitiesSO.CheckDash == true && scene.name != "TitleScreen" && scene.name != "HubShip")
+        {
+            Debug.Log("Dash input went through");
+            playerRB.AddForce(moveDirection * dashForce, ForceMode2D.Impulse);
+        }
+    }
+
 
     //Player's basic attack 
     private void ScytheAttack()
