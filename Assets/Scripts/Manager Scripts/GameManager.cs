@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
             levelHandlerSO.CheckLevelOne = false;
             levelHandlerSO.CheckLevelTwo = false;
             abilitiesSO.CurrentNukeValue = 0;
+            Time.timeScale = 1f;
         }
     }
 

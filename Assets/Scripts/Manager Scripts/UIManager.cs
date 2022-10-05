@@ -48,11 +48,11 @@ public class UIManager : MonoBehaviour
             soulsText.text = (":" + soulsSO.Value);
         }
 
-        healthUI.maxValue = healthSO.MaxHealthValue;
+
         if (healthUI != null)
         {
             SetHealth(healthSO.CurrentHealthValue);
-
+            healthUI.maxValue = healthSO.MaxHealthValue;
             maxHealthCount.text = ("Max Health: " + healthSO.MaxHealthValue);
         }
 

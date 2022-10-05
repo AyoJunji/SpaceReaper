@@ -5529,11 +5529,7 @@ MonoBehaviour:
   m_text: 'hold attack to throw scythe
 
 
-    press a to dash
-
-
-    hold a to nuke
-    map
+    hold a to nuke map
 
 '
   m_isRightToLeft: 0

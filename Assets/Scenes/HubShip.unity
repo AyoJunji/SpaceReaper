@@ -754,7 +754,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2033990091}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: SettingsMenu
         m_Mode: 1
@@ -24172,9 +24172,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2033990091}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: GoToMainMenu
+        m_MethodName: ReturnToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27109,7 +27109,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2033990091}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: SettingsMenu
         m_Mode: 1
@@ -27219,11 +27219,7 @@ MonoBehaviour:
   m_text: 'hold attack to throw scythe
 
 
-    press a to dash
-
-
-    hold a to nuke
-    map
+    hold a to nuke map
 
 '
   m_isRightToLeft: 0
@@ -28098,7 +28094,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2033990091}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -29892,7 +29888,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2033990091}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: ResumeGame
         m_Mode: 1
@@ -29971,9 +29967,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508a76944eb2fc945b9ec377923b4940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 137059327}
   deathMenu: {fileID: 0}
-  settingsMenu: {fileID: 0}
+  settingsMenu: {fileID: 399230802}
   mainMenu: {fileID: 0}
   healthSO: {fileID: 11400000, guid: 78792c0a9a8c0aa4aaaf9dd7ac00698b, type: 2}
   healthUI: {fileID: 585423722}
