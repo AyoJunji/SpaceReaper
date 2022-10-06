@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject alienGhost;
     public GameObject alienSpitter;
 
-    public float ghostTimer = 2f;
+    public float ghostTimer = 4f;
 
     public float spitterTimer = 6f;
 

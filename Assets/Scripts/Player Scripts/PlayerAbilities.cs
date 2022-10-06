@@ -12,6 +12,7 @@ public class PlayerAbilities : MonoBehaviour
 
     [Header("Abilities")]
     public GameObject bubbleShield;
+    public GameObject nukeFX;
     public GameObject nukeBox;
 
     [Header("Player Input")]
@@ -19,7 +20,7 @@ public class PlayerAbilities : MonoBehaviour
     [SerializeField] private InputActionReference actionReference;
     [SerializeField] private InputActionReference throwReference;
 
-    public static bool playerHasScythe;
+    public static bool playerHasScytheAbility;
     public Transform scythePosition;
 
     [SerializeField] private AbilitiesSO abilitiesSO;
@@ -27,6 +28,9 @@ public class PlayerAbilities : MonoBehaviour
     public GameObject scytheObject;
 
     GameObject target;
+
+    [SerializeField] private AudioSource audioSource;
+    public AudioClip nukeNoise;
 
     private void Awake()
     {
@@ -47,8 +51,7 @@ public class PlayerAbilities : MonoBehaviour
 
     void Start()
     {
-        playerHasScythe = true;
-
+        playerHasScytheAbility = abilitiesSO.CheckThrow;
         if (!(actionReference.action.interactions.Contains("Press") && actionReference.action.interactions.Contains("Hold")))
         {
             return;
@@ -107,17 +110,14 @@ public class PlayerAbilities : MonoBehaviour
             Destroy(objReference);
             bubbleShield.SetActive(false);
         }
-
-        if (coll.gameObject.tag == "Scythe")
-        {
-            playerHasScythe = true;
-        }
     }
 
     private void NukeAbility()
     {
         if (abilitiesSO.CurrentNukeValue > 0)
         {
+            Instantiate(nukeFX, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
+            audioSource.PlayOneShot(nukeNoise, .2f);
             nukeBox.SetActive(true);
             abilitiesSO.CurrentNukeValue -= 1;
             StartCoroutine(NukeActivation());
@@ -127,9 +127,8 @@ public class PlayerAbilities : MonoBehaviour
     private void ScytheThrow()
     {
         Scene scene = SceneManager.GetActiveScene();
-        if (abilitiesSO.CheckThrow == true && playerHasScythe == true && scene.name != "TitleScreen" && scene.name != "HubShip")
+        if (playerHasScytheAbility == true && scene.name != "TitleScreen" && scene.name != "HubShip")
         {
-            playerHasScythe = false;
             Instantiate(scytheObject, scythePosition.position, Quaternion.identity);
         }
     }

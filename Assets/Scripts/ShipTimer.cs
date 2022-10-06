@@ -8,7 +8,7 @@ public class ShipTimer : MonoBehaviour
 {
     [SerializeField] LevelHandler levelHandler;
 
-    public float currentTime = 90f;
+    public float currentTime = 30f;
     public TextMeshProUGUI timerText;
 
     void Update()

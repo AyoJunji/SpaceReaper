@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         attackReset = true;
         playerControls = new PlayerControls();
+        LevelWin.enemiesLeft = 0;
     }
 
     //Enables player controls when directed to

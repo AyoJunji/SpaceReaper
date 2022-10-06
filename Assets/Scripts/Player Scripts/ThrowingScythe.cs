@@ -8,7 +8,7 @@ public class ThrowingScythe : MonoBehaviour
     private Rigidbody2D scytheRB;
     public float projectileSpeed = 5f;
     private int health = 3;
-    private Animator anim; 
+    private Animator anim;
 
     void Start()
     {
@@ -34,7 +34,6 @@ public class ThrowingScythe : MonoBehaviour
 
         if (health <= 0)
         {
-            PlayerAbilities.playerHasScythe = true;
             Destroy(gameObject);
         }
 

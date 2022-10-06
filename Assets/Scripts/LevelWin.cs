@@ -11,9 +11,11 @@ public class LevelWin : MonoBehaviour
     public static int enemiesLeft;
     public int enemyCountDebug;
 
+
     void Start()
     {
         healthSO.CurrentHealthValue = healthSO.MaxHealthValue;
+
     }
 
     void Update()
